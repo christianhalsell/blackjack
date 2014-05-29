@@ -1,0 +1,74 @@
+.container {
+	width:960px;
+	margin:0 auto;
+	position:relative;
+}
+
+.card {
+	width:81px;
+	height:118px;
+	position:absolute;
+	background:url("../images/cards.gif") no-repeat 0 -469px;
+	text-shadow:0 1px 0 #fff; font:bold 14px verdana, arial, sans-serif;
+}
+
+.card-2h {background-position: 0 0}
+.card-2d {background-position: 0 -117px}
+.card-2c {background-position: 0 -234px}
+.card-2s {background-position: 0 -352px}
+.card-3h {background-position: -81px 0}
+.card-3d {background-position: -81px -117px}
+.card-3c {background-position: -81px -234px}
+.card-3s {background-position: -81px -352px}
+.card-4h {background-position: -162px 0}
+.card-4d {background-position: -162px -117px}
+.card-4c {background-position: -162px -234px}
+.card-4s {background-position: -162px -352px}
+.card-5h {background-position: -243px 0}
+.card-5d {background-position: -243px -117px}
+.card-5c {background-position: -243px -234px}
+.card-5s {background-position: -243px -352px}
+.card-6h {background-position: -324px 0}
+.card-6d {background-position: -324px -117px}
+.card-6c {background-position: -324px -234px}
+.card-6s {background-position: -324px -352px}
+.card-7h {background-position: -405px 0}
+.card-7d {background-position: -405px -117px}
+.card-7c {background-position: -405px -234px}
+.card-7s {background-position: -405px -352px}
+.card-8h {background-position: -486px 0}
+.card-8d {background-position: -486px -117px}
+.card-8c {background-position: -486px -234px}
+.card-8s {background-position: -486px -352px}
+.card-9h {background-position: -567px 0}
+.card-9d {background-position: -567px -117px}
+.card-9c {background-position: -567px -234px}
+.card-9s {background-position: -567px -352px}
+.card-10h {background-position: -648px 0}
+.card-10d {background-position: -648px -117px}
+.card-10c {background-position: -648px -234px}
+.card-10s {background-position: -648px -352px}
+.card-jh {background-position: -729px 0}
+.card-jd {background-position: -729px -117px}
+.card-jc {background-position: -729px -234px}
+.card-js {background-position: -729px -352px}
+.card-qh {background-position: -810px 0}
+.card-qd {background-position: -810px -117px}
+.card-qc {background-position: -810px -234px}
+.card-qs {background-position: -810px -352px}
+.card-kh {background-position: -891px 0}
+.card-kd {background-position: -891px -117px}
+.card-kc {background-position: -891px -234px}
+.card-ks {background-position: -891px -352px}
+.card-ah {background-position: -972px 0}
+.card-ad {background-position: -972px -117px}
+.card-ac {background-position: -972px -234px}
+.card-as {background-position: -972px -352px}
+
+.overturn {background-position:0 -469px !important}
+
+#playerCard1 {left:200px; top:200px}
+#playerCard2 {left:300px; top:200px}
+
+#dealerCard1 {left:200px; top:0}
+#dealerCard2 {left:300px; top:0}
