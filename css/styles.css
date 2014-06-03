@@ -1,15 +1,19 @@
+body {background-color:green;}
+
 .container {
-	width:960px;
 	margin:0 auto;
 	position:relative;
+	width:960px;
 }
 
+.hide {display:none;}
+
 .card {
-	width:81px;
+	background:url("../images/cards.gif") no-repeat 0 -469px;
 	height:118px;
 	position:absolute;
-	background:url("../images/cards.gif") no-repeat 0 -469px;
-	text-shadow:0 1px 0 #fff; font:bold 14px verdana, arial, sans-serif;
+	text-shadow:0 1px 0 #fff; font:bold 14px verdana, arial, sans-serif; /* to display card name */
+	width:81px;
 }
 
 .card-2h {background-position: 0 0}
@@ -69,6 +73,18 @@
 
 #playerCard1 {left:200px; top:200px}
 #playerCard2 {left:300px; top:200px}
+#playerCard3 {left:400px; top:200px; display:none;}
+#playerCard4 {left:500px; top:200px; display:none;}
+#playerCard5 {left:600px; top:200px; display:none;}
+#playerCard6 {left:700px; top:200px; display:none;}
 
 #dealerCard1 {left:200px; top:0}
 #dealerCard2 {left:300px; top:0}
+#dealerCard3 {left:400px; top:0}
+#dealerCard4 {left:500px; top:0}
+#dealerCard5 {left:600px; top:0}
+#dealerCard6 {left:700px; top:0}
+
+button {cursor:pointer;}
+#hit {background:#9f8;}
+#hold {background:orange;}

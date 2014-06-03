@@ -106,10 +106,22 @@ $('#dealerCard1').append(deck[1].name);
 $('#playerCard2').append(deck[2].name);
 $('#dealerCard2').append(deck[3].name);*/
 
+// Start the score at zero
+var playerScore = 0;
+var dealerScore = 0;
+
 console.log("Player score: " + ((deck[0].value) + (deck[2].value)));
 console.log("Dealer score: " + ((deck[1].value) + (deck[3].value)));
 
-/*console.log(deck[0].name);
-console.log(deck[1].name);
-console.log(deck[2].name);
-console.log(deck[3].name);*/
+var cardCounter = 3;
+var playerTurn = false;
+
+function hit() {
+	if (playerTurn === true) {
+		
+	} else {
+		
+	}
+}
+
+hit();
