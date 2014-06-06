@@ -6,8 +6,6 @@ body {background-color:green;}
 	width:960px;
 }
 
-.hide {display:none;}
-
 .card {
 	background:url("../images/cards.gif") no-repeat 0 -469px;
 	height:118px;
@@ -73,10 +71,10 @@ body {background-color:green;}
 
 #playerCard1 {left:200px; top:200px}
 #playerCard2 {left:300px; top:200px}
-#playerCard3 {left:400px; top:200px; display:none;}
-#playerCard4 {left:500px; top:200px; display:none;}
-#playerCard5 {left:600px; top:200px; display:none;}
-#playerCard6 {left:700px; top:200px; display:none;}
+#playerCard3 {left:400px; top:200px}
+#playerCard4 {left:500px; top:200px}
+#playerCard5 {left:600px; top:200px}
+#playerCard6 {left:700px; top:200px}
 
 #dealerCard1 {left:200px; top:0}
 #dealerCard2 {left:300px; top:0}

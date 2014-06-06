@@ -94,6 +94,12 @@ function shuffle(array) {
 
 shuffle(deck);
 
+// Show shuffled deck in console
+// for (var i in deck) {
+for (var i = 0; i < 10; i++) {
+	console.log(i + ") " + deck[i].name);
+}
+
 // Deal the first four cards
 $('#playerCard1').addClass(deck[0].position);
 $('#dealerCard1').addClass(deck[1].position);
@@ -107,21 +113,21 @@ $('#playerCard2').append(deck[2].name);
 $('#dealerCard2').append(deck[3].name);*/
 
 // Start the score at zero
-var playerScore = 0;
-var dealerScore = 0;
+var playerScore = (deck[0].value) + (deck[2].value);
+var dealerScore = (deck[1].value) + (deck[3].value);
 
 console.log("Player score: " + ((deck[0].value) + (deck[2].value)));
 console.log("Dealer score: " + ((deck[1].value) + (deck[3].value)));
 
-var cardCounter = 3;
-var playerTurn = false;
+var deckCounter = 4;
+var playerCounter = 3;
+var playerTurn = true;
 
-function hit() {
-	if (playerTurn === true) {
-		
-	} else {
-		
-	}
-}
+$('#hit').on('click', function() {
+	var playerCard = '<div id="playerCard' + playerCounter + '" class="card '+ deck[deckCounter].position + '"></div>';
+	$('.container').append(playerCard);
 
-hit();
+	playerScore += deck[deckCounter].value;
+	deckCounter += 1;
+	playerCounter += 1;
+});
