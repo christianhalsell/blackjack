@@ -1,4 +1,4 @@
-body {background-color:green;}
+body {background-color:green; font-family:verdana, arial, sans-serif;}
 
 .container {
 	margin:0 auto;
@@ -86,3 +86,9 @@ body {background-color:green;}
 button {cursor:pointer;}
 #hit {background:#9f8;}
 #hold {background:orange;}
+
+#playerScore,
+#dealerScore {color:#fff; font-size:15px;}
+
+#playerScore span,
+#dealerScore span {color:yellow; font-weight: bold}

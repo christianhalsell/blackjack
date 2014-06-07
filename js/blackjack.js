@@ -95,8 +95,7 @@ function shuffle(array) {
 shuffle(deck);
 
 // Show shuffled deck in console
-// for (var i in deck) {
-for (var i = 0; i < 10; i++) {
+for (var i in deck) {
 	console.log(i + ") " + deck[i].name);
 }
 
@@ -116,8 +115,19 @@ $('#dealerCard2').append(deck[3].name);*/
 var playerScore = (deck[0].value) + (deck[2].value);
 var dealerScore = (deck[1].value) + (deck[3].value);
 
-console.log("Player score: " + ((deck[0].value) + (deck[2].value)));
-console.log("Dealer score: " + ((deck[1].value) + (deck[3].value)));
+// Display score
+var displayPlayerScore = function() {
+	$('#playerScore span').html(playerScore);
+}
+
+displayPlayerScore();
+
+// Display Dealer Score
+var displayDealerScore = function() {
+	$('#dealerScore span').html(dealerScore);
+}
+
+displayDealerScore();
 
 var deckCounter = 4;
 var playerCounter = 3;
@@ -130,4 +140,9 @@ $('#hit').on('click', function() {
 	playerScore += deck[deckCounter].value;
 	deckCounter += 1;
 	playerCounter += 1;
+	displayPlayerScore();
+
+	// If player goes over 21
+	/* ==== SUPER DUPER AWESOME CODE HERE ==== */
 });
+
