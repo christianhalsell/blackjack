@@ -154,11 +154,11 @@ $('#hit').on('click', function() {
 			/* +++++++++++++++++++++++++++++++++++++++++++ */
 			/* ++++ WHAT HAPPENS IF THEY HAVE AN ACE? ++++ */
 			/* +++++++++++++++++++++++++++++++++++++++++++ */
-		}
 		
-		// Hide the hit button
-		$('#hit').css('visibility','hidden');
-		alert("You bust, sucka!");
+			// Hide the hit button
+			$('#hit').css('visibility','hidden');
+			alert("You bust, sucka!");
+		}
 	}
 });
 
