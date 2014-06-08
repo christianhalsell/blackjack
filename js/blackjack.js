@@ -144,6 +144,10 @@ $('#hit').on('click', function() {
 
 	// If player goes over 21
 	if (playerScore > 21) {
+		/* +++++++++++++++++++++++++++++++++++++++++++ */
+		/* ++++ WHAT HAPPENS IF THEY HAVE AN ACE? ++++ */
+		/* +++++++++++++++++++++++++++++++++++++++++++ */
+		
 		$('#hit').css('visibility','hidden');
 		alert("You bust, sucka!");
 	}
