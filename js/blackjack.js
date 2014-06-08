@@ -111,6 +111,9 @@ $('#dealerCard1').append(deck[1].name);
 $('#playerCard2').append(deck[2].name);
 $('#dealerCard2').append(deck[3].name);*/
 
+// Keep track of player's and dealer's hand
+var playerHand = [deck[0], deck[2]];
+
 // Start the score at zero
 var playerScore = (deck[0].value) + (deck[2].value);
 var dealerScore = (deck[1].value) + (deck[3].value);
@@ -138,16 +141,22 @@ $('#hit').on('click', function() {
 	$('.container').append(playerCard);
 
 	playerScore += deck[deckCounter].value;
+	playerHand.push(deck[deckCounter]);
 	deckCounter += 1;
 	playerCounter += 1;
 	displayPlayerScore();
 
 	// If player goes over 21
 	if (playerScore > 21) {
-		/* +++++++++++++++++++++++++++++++++++++++++++ */
-		/* ++++ WHAT HAPPENS IF THEY HAVE AN ACE? ++++ */
-		/* +++++++++++++++++++++++++++++++++++++++++++ */
+		for (i in playerHand) {
+			console.log(playerHand[i]);
+
+			/* +++++++++++++++++++++++++++++++++++++++++++ */
+			/* ++++ WHAT HAPPENS IF THEY HAVE AN ACE? ++++ */
+			/* +++++++++++++++++++++++++++++++++++++++++++ */
+		}
 		
+		// Hide the hit button
 		$('#hit').css('visibility','hidden');
 		alert("You bust, sucka!");
 	}
