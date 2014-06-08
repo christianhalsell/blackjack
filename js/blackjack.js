@@ -143,6 +143,19 @@ $('#hit').on('click', function() {
 	displayPlayerScore();
 
 	// If player goes over 21
-	/* ==== SUPER DUPER AWESOME CODE HERE ==== */
+	if (playerScore > 21) {
+		$('#hit').css('visibility','hidden');
+		alert("You bust, sucka!");
+	}
 });
 
+$('#hold').on('click', function() {
+	// Deactivate hit and hold buttons
+	$('#hit').css('visibility','hidden');
+	$('#hold').css('visibility','hidden');
+
+	// Dealer plays on anything below 17
+	/* ++++++++++++++++++++++++++++++++++++++++++++++ */
+	/* ++++ INSERT SUPER DUPER AWESOME CODE HERE ++++ */
+	/* ++++++++++++++++++++++++++++++++++++++++++++++ */
+});
