@@ -157,7 +157,7 @@ $('#hit').on('click', function() {
 		
 			// Hide the hit button
 			$('#hit').css('visibility','hidden');
-			alert("You bust, sucka!");
+			$('#playerScore').html("You bust, sucka!");
 		}
 	}
 });
