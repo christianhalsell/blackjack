@@ -164,19 +164,33 @@ $('#hit').on('click', function() {
 	var playerCard = '<div id="playerCard' + playerCounter + '" class="card '+ deck[deckCounter].position + '"></div>';
 	$('.container').append(playerCard);
 
+	// Check to see if player's new card is an ace
+	if (deck[deckCounter].value === 11) {
+		playerAceCount += 1;
+	}
+
 	playerScore += deck[deckCounter].value;
 	playerHand.push(deck[deckCounter]);
 	deckCounter += 1;
 	playerCounter += 1;
 	displayPlayerScore();
 
+
 	// If player goes over 21
-	if (playerScore > 21) {
-		
-		// Hide the hit button
-		$('#hit').css('visibility','hidden');
-		$('#playerScore').html("You bust, sucka!");
+	if (playerScore > 21) {		
+		if (playerAceCount > 0) { // Check to see if the player has at least one ace
+			playerScore -= 10;
+			playerAceCount -= 1;
+			displayPlayerScore();
+		} else { // Otherwise, hide the hit button			
+			$('#hit').css('visibility','hidden');
+			$('#playerScore').html("You bust, sucka!");
+		}
 	}
+
+	console.log(" ");
+	console.log("Player Score: " + playerScore);
+	console.log("Player Ace Count: " + playerAceCount);
 });
 
 $('#hold').on('click', function() {
