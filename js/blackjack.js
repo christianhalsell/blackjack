@@ -1,4 +1,4 @@
-// Activate "Show Card" functionality
+// Activate "Show Card" function
 $('#hide').on('click', function() {
 	$('#dealerCard1').toggleClass('overturn');
 
@@ -68,8 +68,10 @@ var card49 = new Card('card-ad', 'Ace of Diamonds', 11);
 var card50 = new Card('card-ac', 'Ace of Clubs', 11);
 var card51 = new Card('card-as', 'Ace of Spades', 11);
 
+
 // The deck
 var deck = [card00, card01, card02, card03, card04, card05, card06, card07, card08, card09,	card10, card11, card12, card13, card14, card15, card16, card17, card18, card19,	card20, card21, card22, card23, card24, card25, card26, card27, card28, card29,	card30, card31, card32, card33, card34, card35, card36, card37, card38, card39,	card40, card41, card42, card43, card44, card45, card46, card47, card48, card49,	card50, card51];
+
 
 // Shuffle the deck
 function shuffle(array) {
@@ -94,10 +96,12 @@ function shuffle(array) {
 
 shuffle(deck);
 
+
 // Show shuffled deck in console
 for (var i in deck) {
 	console.log(i + ") " + deck[i].name);
 }
+
 
 // Deal the first four cards
 $('#playerCard1').addClass(deck[0].position);
@@ -105,18 +109,37 @@ $('#dealerCard1').addClass(deck[1].position);
 $('#playerCard2').addClass(deck[2].position);
 $('#dealerCard2').addClass(deck[3].position);
 
-// Show card name on card
-/*$('#playerCard1').append(deck[0].name);
-$('#dealerCard1').append(deck[1].name);
-$('#playerCard2').append(deck[2].name);
-$('#dealerCard2').append(deck[3].name);*/
 
 // Keep track of player's and dealer's hand
 var playerHand = [deck[0], deck[2]];
+var dealerHand = [deck[1], deck[3]];
+
+
+// Ace counter
+var playerAceCount = 0,
+		dealerAceCount = 0;
+
+
+// Check to see how many aces were dealt
+for (var i = 0; i < dealerHand.length; i++) {
+	if (dealerHand[i].value === 11) {
+		dealerAceCount += 1;
+	}	
+}
+console.log("Dealer has " + dealerAceCount + " Aces.");
+
+for (var i = 0; i < playerHand.length; i++) {
+	if (playerHand[i].value === 11) {
+		playerAceCount += 1;
+	}	
+}
+console.log("Player has " + playerAceCount + " Aces.");
+
 
 // Start the score at zero
 var playerScore = (deck[0].value) + (deck[2].value);
 var dealerScore = (deck[1].value) + (deck[3].value);
+
 
 // Display score
 var displayPlayerScore = function() {
@@ -124,6 +147,7 @@ var displayPlayerScore = function() {
 }
 
 displayPlayerScore();
+
 
 // Display Dealer Score
 var displayDealerScore = function() {
@@ -148,17 +172,10 @@ $('#hit').on('click', function() {
 
 	// If player goes over 21
 	if (playerScore > 21) {
-		for (i in playerHand) {
-			console.log(playerHand[i]);
-
-			/* +++++++++++++++++++++++++++++++++++++++++++ */
-			/* ++++ WHAT HAPPENS IF THEY HAVE AN ACE? ++++ */
-			/* +++++++++++++++++++++++++++++++++++++++++++ */
 		
-			// Hide the hit button
-			$('#hit').css('visibility','hidden');
-			$('#playerScore').html("You bust, sucka!");
-		}
+		// Hide the hit button
+		$('#hit').css('visibility','hidden');
+		$('#playerScore').html("You bust, sucka!");
 	}
 });
 
