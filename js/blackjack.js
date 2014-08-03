@@ -159,9 +159,12 @@ displayDealerScore();
 var deckCounter = 4;
 var playerCounter = 3;
 var playerTurn = true;
+var playerCard;
+var dealerCounter = 3;
+var dealerCard;
 
 $('#hit').on('click', function() {
-	var playerCard = '<div id="playerCard' + playerCounter + '" class="card '+ deck[deckCounter].position + '"></div>';
+	playerCard = '<div id="playerCard' + playerCounter + '" class="card '+ deck[deckCounter].position + '"></div>';
 	$('.container').append(playerCard);
 
 	// Check to see if player's new card is an ace
@@ -182,15 +185,11 @@ $('#hit').on('click', function() {
 			playerScore -= 10;
 			playerAceCount -= 1;
 			displayPlayerScore();
-		} else { // Otherwise, hide the hit button			
+		} else { // Otherwise, the player loses
 			$('#hit').css('visibility','hidden');
 			$('#playerScore').html("You bust, sucka!");
 		}
 	}
-
-	console.log(" ");
-	console.log("Player Score: " + playerScore);
-	console.log("Player Ace Count: " + playerAceCount);
 });
 
 $('#hold').on('click', function() {
@@ -198,8 +197,22 @@ $('#hold').on('click', function() {
 	$('#hit').css('visibility','hidden');
 	$('#hold').css('visibility','hidden');
 
-	// Dealer plays on anything below 17
-	/* ++++++++++++++++++++++++++++++++++++++++++++++ */
-	/* ++++ INSERT SUPER DUPER AWESOME CODE HERE ++++ */
-	/* ++++++++++++++++++++++++++++++++++++++++++++++ */
+	$('#dealerCard1').removeClass('overturn');
 });
+
+// Dealer plays on anything below 17
+	if (dealerScore < 17) {
+		dealerCard = '<div id="dealerCard' + dealerCounter + '" class="card '+ deck[deckCounter].position + '"></div>';
+		$('.container').append(dealerCard);
+
+		// Check to see if player's new card is an ace
+		if (deck[deckCounter].value === 11) {
+			dealerAceCount += 1;
+		}
+
+		dealerScore += deck[deckCounter].value;
+		dealerHand.push(deck[deckCounter]);
+		deckCounter += 1;
+		dealerCounter += 1;
+		displayDealerScore();
+	};
