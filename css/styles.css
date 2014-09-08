@@ -1,9 +1,14 @@
-body {background-color:green; font-family:verdana, arial, sans-serif;}
+body {
+	background:black;
+	font-family:verdana, arial, sans-serif;
+}
 
 .container {
-	margin:0 auto;
+	margin:20px auto;
 	position:relative;
-	width:960px;
+	width:800px;
+	height:600px;
+	background:green url("../images/table-bg.jpg") no-repeat 0 0;
 }
 
 .card {
@@ -69,19 +74,19 @@ body {background-color:green; font-family:verdana, arial, sans-serif;}
 
 .overturn {background-position:0 -469px !important}
 
-#playerCard1 {left:200px; top:200px}
-#playerCard2 {left:300px; top:200px}
-#playerCard3 {left:400px; top:200px}
-#playerCard4 {left:500px; top:200px}
-#playerCard5 {left:600px; top:200px}
-#playerCard6 {left:700px; top:200px}
+#playerCard1 {left:350px; top:221px}
+#playerCard2 {left:380px; top:221px}
+#playerCard3 {left:410px; top:221px}
+#playerCard4 {left:440px; top:221px}
+#playerCard5 {left:470px; top:221px}
+#playerCard6 {left:500px; top:221px}
 
-#dealerCard1 {left:200px; top:0}
-#dealerCard2 {left:300px; top:0}
-#dealerCard3 {left:400px; top:0}
-#dealerCard4 {left:500px; top:0}
-#dealerCard5 {left:600px; top:0}
-#dealerCard6 {left:700px; top:0}
+#dealerCard1 {left:350px; top:16px}
+#dealerCard2 {left:380px; top:16px}
+#dealerCard3 {left:410px; top:16px}
+#dealerCard4 {left:440px; top:16px}
+#dealerCard5 {left:470px; top:16px}
+#dealerCard6 {left:500px; top:16px}
 
 button {cursor:pointer;}
 #hit {background:#9f8;}
