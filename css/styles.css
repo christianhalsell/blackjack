@@ -6,9 +6,11 @@ body {
 .container {
 	margin:20px auto;
 	position:relative;
-	width:800px;
-	height:600px;
+	padding:10px;
+	width:780px;
+	height:580px;
 	background:green url("../images/table-bg.jpg") no-repeat 0 0;
+	border:2px solid #f6e09f;
 }
 
 .card {
@@ -74,12 +76,12 @@ body {
 
 .overturn {background-position:0 -469px !important}
 
-#playerCard1 {left:350px; top:221px}
-#playerCard2 {left:380px; top:221px}
-#playerCard3 {left:410px; top:221px}
-#playerCard4 {left:440px; top:221px}
-#playerCard5 {left:470px; top:221px}
-#playerCard6 {left:500px; top:221px}
+#playerCard1 {left:350px; top:216px}
+#playerCard2 {left:380px; top:216px}
+#playerCard3 {left:410px; top:216px}
+#playerCard4 {left:440px; top:216px}
+#playerCard5 {left:470px; top:216px}
+#playerCard6 {left:500px; top:216px}
 
 #dealerCard1 {left:350px; top:16px}
 #dealerCard2 {left:380px; top:16px}
