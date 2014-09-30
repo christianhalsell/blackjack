@@ -69,23 +69,38 @@ var card00 = new Card('card-2h', '2 of Hearts', 2),
 	card51 = new Card('card-as', 'Ace of Spades', 11);
 
 
-// The deck
-var deck = [card00, card01, card02, card03, card04, card05, card06, card07, card08, card09,	card10, card11, card12, card13, card14, card15, card16, card17, card18, card19,	card20, card21, card22, card23, card24, card25, card26, card27, card28, card29,	card30, card31, card32, card33, card34, card35, card36, card37, card38, card39,	card40, card41, card42, card43, card44, card45, card46, card47, card48, card49,	card50, card51];
+// the deck
+var deck = [];
 
+// put the cards into the deck
+for (i = 0; i < 52; i++) {
+	var num,
+		tempCard;
 
-// Shuffle the deck
+	if (i < 10) { // if the number is less than 10, put a zero in front of the number
+		num = "0" + i;
+	} else {
+		num = i;
+	}
+
+	tempCard = "card" + num;
+
+	deck.push(window[tempCard]); // convert string into variable name
+}
+
+// shuffle the deck
 function shuffle(array) {
 	var counter = array.length, temp, index;
 
-	// While there are elements in the array
+	// while there are elements in the array
 	while (counter > 0) {
-		// Pick a random index
+		// pick a random index
 		index = Math.floor(Math.random() * counter);
 
-		// Decrease counter by 1
+		// decrease counter by 1
 		counter--;
 
-		// And swap the last element with it
+		// and swap the last element with it
 		temp = array[counter];
 		array[counter] = array[index];
 		array[index] = temp;
@@ -97,30 +112,30 @@ function shuffle(array) {
 shuffle(deck);
 
 
-// Show shuffled deck in console
-/*f or (var i in deck) {
+// show shuffled deck in console
+/* for (var i in deck) {
 	console.log(i + ") " + deck[i].name);
 } */
 
 
-// Deal the first four cards
+// deal the first four cards
 $('#playerCard1').addClass(deck[0].position);
 $('#dealerCard1').addClass(deck[1].position);
 $('#playerCard2').addClass(deck[2].position);
 $('#dealerCard2').addClass(deck[3].position);
 
 
-// Keep track of player's and dealer's hand
+// keep track of player's and dealer's hand
 var playerHand = [deck[0], deck[2]],
 	dealerHand = [deck[1], deck[3]];
 
 
-// Ace counter
+// ace counter
 var playerAceCount = 0,
 	dealerAceCount = 0;
 
 
-// Check to see how many aces were dealt
+// check to see how many aces were dealt
 for (var i = 0; i < dealerHand.length; i++) {
 	if (dealerHand[i].value === 11) {
 		dealerAceCount += 1;
@@ -134,12 +149,12 @@ for (var i = 0; i < playerHand.length; i++) {
 }
 
 
-// Start the score at zero
+// start the score at zero
 var playerScore = (deck[0].value) + (deck[2].value),
 	dealerScore = (deck[1].value) + (deck[3].value);
 
 
-// Display Player score
+// display Player score
 var displayPlayerScore = function() {
 	$('#playerScore span').html(playerScore);
 }
@@ -147,7 +162,7 @@ var displayPlayerScore = function() {
 displayPlayerScore();
 
 
-// Display Dealer score
+// display Dealer score
 var displayDealerScore = function() {
 	$('#dealerScore span').html(dealerScore);
 }
@@ -155,7 +170,7 @@ var displayDealerScore = function() {
 displayDealerScore();
 
 
-// Let's play!
+// let's play!
 var deckCounter = 4,
 	playerCounter = 3,
 	dealerCounter = 3,
@@ -163,16 +178,16 @@ var deckCounter = 4,
 	dealerCard;
 
 $('#hit').on('click', function() {
-	// Where do the cards go?
+	// where do the cards go?
 	playerCard = '<div id="playerCard' + playerCounter + '" class="card '+ deck[deckCounter].position + '"></div>';
 	$('.container').append(playerCard);
 
-	// Check to see if player's new card is an ace
+	// check to see if player's new card is an ace
 	if (deck[deckCounter].value === 11) {
 		playerAceCount += 1;
 	}
 
-	// Update the information
+	// update the information
 	playerScore += deck[deckCounter].value;
 	playerHand.push(deck[deckCounter]);
 	deckCounter += 1;
@@ -180,13 +195,13 @@ $('#hit').on('click', function() {
 	displayPlayerScore();
 
 
-	// If player goes over 21
+	// if player goes over 21
 	if (playerScore > 21) {		
-		if (playerAceCount > 0) { // Check to see if the player has at least one ace
+		if (playerAceCount > 0) { // check to see if the player has at least one ace
 			playerScore -= 10;
 			playerAceCount -= 1;
 			displayPlayerScore();
-		} else { // Otherwise, the player loses
+		} else { // otherwise, the player loses
 			$('#hit').css('visibility','hidden');
 			$('#playerScore').html("You bust, sucka!");
 		}
@@ -194,17 +209,17 @@ $('#hit').on('click', function() {
 });
 
 var dealerTurn = function() {
-	// Dealer plays on anything below 17
+	// dealer plays on anything below 17
 	while (dealerScore < 17) {
 		dealerCard = '<div id="dealerCard' + dealerCounter + '" class="card '+ deck[deckCounter].position + '"></div>';
 		$('.container').append(dealerCard);
 
-		// Check to see if dealer's new card is an ace
+		// check to see if dealer's new card is an ace
 		if (deck[deckCounter].value === 11) {
 			dealerAceCount += 1;
 		}
 
-		// Update the information
+		// update the information
 		dealerScore += deck[deckCounter].value;
 		dealerHand.push(deck[deckCounter]);
 		deckCounter += 1;
@@ -214,13 +229,13 @@ var dealerTurn = function() {
 };
 
 
-// What happens when the player holds
+// what happens when the player holds
 $('#hold').on('click', function() {
-	// Deactivate hit and hold buttons
+	// deactivate hit and hold buttons
 	$('#hit').css('visibility','hidden');
 	$('#hold').css('visibility','hidden');
 
-	// Show the overturned card
+	// show the overturned card
 	$('#dealerCard1').removeClass('overturn');
 	dealerTurn();
 });
