@@ -177,6 +177,7 @@ var deckCounter = 4,
 	playerCard,
 	dealerCard;
 
+// player's turn
 $('#hit').on('click', function() {
 	// where do the cards go?
 	playerCard = '<div id="playerCard' + playerCounter + '" class="card '+ deck[deckCounter].position + '"></div>';
@@ -208,6 +209,7 @@ $('#hit').on('click', function() {
 	}
 });
 
+// dealer's turn
 var dealerTurn = function() {
 	// dealer plays on anything below 17
 	while (dealerScore < 17) {
