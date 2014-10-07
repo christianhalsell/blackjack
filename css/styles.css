@@ -4,11 +4,14 @@ body {
 }
 
 .container {
-	margin:20px auto;
-	position:relative;
+	position:absolute;
 	padding:10px;
 	width:780px;
 	height:580px;
+	top:50%;
+	left:50%;
+	margin-top:-290px;
+	margin-left:-390px;
 	background:green url("../images/table-bg.jpg") no-repeat 0 0;
 	border:2px solid #f6e09f;
 }
