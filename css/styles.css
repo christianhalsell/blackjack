@@ -10,8 +10,8 @@ body {
 	height:580px;
 	top:50%;
 	left:50%;
-	margin-top:-290px;
-	margin-left:-390px;
+	margin-top:-300px;
+	margin-left:-400px;
 	background:green url("../images/table-bg.jpg") no-repeat 0 0;
 	border:2px solid #f6e09f;
 }
