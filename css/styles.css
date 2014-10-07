@@ -98,7 +98,7 @@ button {cursor:pointer;}
 #hold {background:orange;}
 
 #playerScore,
-#dealerScore {color:#fff; font-size:15px;}
+#dealerScore {color:#fff; font-size:15px; text-shadow: 1px 1px 2px #000;}
 
 #playerScore span,
 #dealerScore span {color:yellow; font-weight: bold}
