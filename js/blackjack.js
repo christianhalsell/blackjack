@@ -71,7 +71,7 @@ GAMES.Blackjack = (function() {
 				card50, card51];
 
 	// show dealer's hidden card
-/*	var showCard = function() {
+	var showCard = function() {
 		$('#dealerCard1').toggleClass('overturn');
 
 		if ($('#dealerCard1').hasClass('overturn')) {		
@@ -85,7 +85,7 @@ GAMES.Blackjack = (function() {
 
 
 	// put the cards into the deck
-	var cardsIntoDeck = function() {
+/*	var cardsIntoDeck = function() {
 		for (var i = 0; i < 1; i++) {
 			var num,
 				tempCard;
@@ -98,12 +98,12 @@ GAMES.Blackjack = (function() {
 
 			tempCard = "card" + num;
 
-			deck.push(tempCard); // convert string into variable name
+			deck.push(window[tempCard]); // convert string into variable name
 		}
 	};
 
 	cardsIntoDeck();
-
+*/
 
 	// shuffle the deck
 	var shuffle = function(array) {
@@ -126,20 +126,26 @@ GAMES.Blackjack = (function() {
 		return array;
 	}
 
-	shuffle(deck);
+	//shuffle(deck);
 
 
 	// show shuffled deck in console
-	for (var i in deck) {
-		console.log(i + ") " + deck[i].name);
+	var showDeckInConsole = function() {
+		for (var i in deck) {
+			console.log(i + ") " + deck[i].name);
+		}
 	}
 
 
 	// deal the first four cards
-	$('#playerCard1').addClass(deck[0].position);
-	$('#dealerCard1').addClass(deck[1].position);
-	$('#playerCard2').addClass(deck[2].position);
-	$('#dealerCard2').addClass(deck[3].position);
+	var initialDeal = function() {
+		$('#playerCard1').addClass(deck[0].position);
+		$('#dealerCard1').addClass(deck[1].position);
+		$('#playerCard2').addClass(deck[2].position);
+		$('#dealerCard2').addClass(deck[3].position);
+	}
+
+	//initialDeal();
 
 
 	// keep track of player's and dealer's hand
@@ -157,7 +163,7 @@ GAMES.Blackjack = (function() {
 		for (var i = 0; i < dealerHand.length; i++) {
 			if (dealerHand[i].value === 11) {
 				dealerAceCount += 1;
-			}	
+			}
 		}
 
 		for (var i = 0; i < playerHand.length; i++) {
@@ -170,7 +176,7 @@ GAMES.Blackjack = (function() {
 		console.log("Player has " + playerAceCount + " aces.");
 	};
 
-	aceCheck();
+	//aceCheck();
 
 
 	// start the score at zero
@@ -270,12 +276,13 @@ GAMES.Blackjack = (function() {
 
 	// what happens when the player holds
 	$('#hold').on('click', playerHold);
-*/
+
 	return {
 		init: function() {
-			for (var i in deck) {
-				console.log(i + ") " + deck[i].name);
-			}
+			shuffle(deck);
+			showDeckInConsole();
+			aceCheck();
+			initialDeal();
 		}
 	}
 }());
