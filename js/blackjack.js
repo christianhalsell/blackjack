@@ -1,13 +1,6 @@
-// Activate "Show Card" function
-$('#hide').on('click', function() {
-	$('#dealerCard1').toggleClass('overturn');
+"use strict";
 
-	if ($('#dealerCard1').hasClass('overturn')) {		
-		$('#hide').html("Show Card");
-	} else {
-		$('#hide').html("Hide Card");
-	}
-});
+var deck = []; // the deck
 
 function Card(position, name, value) {
 	this.position = position;
@@ -68,28 +61,43 @@ var card00 = new Card('card-2h', '2 of Hearts', 2),
 	card50 = new Card('card-ac', 'Ace of Clubs', 11),
 	card51 = new Card('card-as', 'Ace of Spades', 11);
 
+// show dealer's hidden card
+var showCard = function() {
+	$('#dealerCard1').toggleClass('overturn');
 
-// the deck
-var deck = [];
+	if ($('#dealerCard1').hasClass('overturn')) {		
+		$('#hide').html("Show Card");
+	} else {
+		$('#hide').html("Hide Card");
+	}
+};
+
+$('#hide').on('click', showCard);
+
 
 // put the cards into the deck
-for (i = 0; i < 52; i++) {
-	var num,
-		tempCard;
+var cardsIntoDeck = function() {
+	for (i = 0; i < 52; i++) {
+		var num,
+			tempCard;
 
-	if (i < 10) { // if the number is less than 10, put a zero in front of the number
-		num = "0" + i;
-	} else {
-		num = i;
+		if (i < 10) { // if the number is less than 10, put a zero in front of the number
+			num = "0" + i;
+		} else {
+			num = i;
+		}
+
+		tempCard = "card" + num;
+
+		deck.push(window[tempCard]); // convert string into variable name
 	}
+};
 
-	tempCard = "card" + num;
+cardsIntoDeck();
 
-	deck.push(window[tempCard]); // convert string into variable name
-}
 
 // shuffle the deck
-function shuffle(array) {
+var shuffle = function(array) {
 	var counter = array.length, temp, index;
 
 	// while there are elements in the array
@@ -98,7 +106,7 @@ function shuffle(array) {
 		index = Math.floor(Math.random() * counter);
 
 		// decrease counter by 1
-		counter--;
+		counter --;
 
 		// and swap the last element with it
 		temp = array[counter];
@@ -113,9 +121,9 @@ shuffle(deck);
 
 
 // show shuffled deck in console
-/* for (var i in deck) {
+for (var i in deck) {
 	console.log(i + ") " + deck[i].name);
-} */
+}
 
 
 // deal the first four cards
@@ -136,17 +144,24 @@ var playerAceCount = 0,
 
 
 // check to see how many aces were dealt
-for (var i = 0; i < dealerHand.length; i++) {
-	if (dealerHand[i].value === 11) {
-		dealerAceCount += 1;
-	}	
-}
+var aceCheck = function() {
+	for (var i = 0; i < dealerHand.length; i++) {
+		if (dealerHand[i].value === 11) {
+			dealerAceCount += 1;
+		}	
+	}
 
-for (var i = 0; i < playerHand.length; i++) {
-	if (playerHand[i].value === 11) {
-		playerAceCount += 1;
-	}	
-}
+	for (var i = 0; i < playerHand.length; i++) {
+		if (playerHand[i].value === 11) {
+			playerAceCount += 1;
+		}	
+	}
+
+	console.log("Dealer has " + dealerAceCount + " aces.");
+	console.log("Player has " + playerAceCount + " aces.");
+};
+
+aceCheck();
 
 
 // start the score at zero
@@ -178,7 +193,7 @@ var deckCounter = 4,
 	dealerCard;
 
 // player's turn
-$('#hit').on('click', function() {
+var playerHit = function() {
 	// where do the cards go?
 	playerCard = '<div id="playerCard' + playerCounter + '" class="card '+ deck[deckCounter].position + '"></div>';
 	$('.container').append(playerCard);
@@ -196,9 +211,9 @@ $('#hit').on('click', function() {
 	displayPlayerScore();
 
 
-	// if player goes over 21
+	// if player goes over 21, check for aces
 	if (playerScore > 21) {		
-		if (playerAceCount > 0) { // check to see if the player has at least one ace
+		if (playerAceCount > 0) { // if player has at least one ace...
 			playerScore -= 10;
 			playerAceCount -= 1;
 			displayPlayerScore();
@@ -207,7 +222,10 @@ $('#hit').on('click', function() {
 			$('#playerScore').html("You bust, sucka!");
 		}
 	}
-});
+};
+
+$('#hit').on('click', playerHit);
+
 
 // dealer's turn
 var dealerTurn = function() {
@@ -231,8 +249,7 @@ var dealerTurn = function() {
 };
 
 
-// what happens when the player holds
-$('#hold').on('click', function() {
+var playerHold = function() {
 	// deactivate hit and hold buttons
 	$('#hit').css('visibility','hidden');
 	$('#hold').css('visibility','hidden');
@@ -240,4 +257,7 @@ $('#hold').on('click', function() {
 	// show the overturned card
 	$('#dealerCard1').removeClass('overturn');
 	dealerTurn();
-});
+};
+
+// what happens when the player holds
+$('#hold').on('click', playerHold);
