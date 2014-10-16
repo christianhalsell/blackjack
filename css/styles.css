@@ -102,3 +102,18 @@ button {cursor:pointer;}
 
 #playerScore span,
 #dealerScore span {color:yellow; font-weight: bold}
+
+.scoreboard {
+	color:#fff;
+	font-size:12px;
+	position:absolute;
+	bottom:0;
+	left:0;
+	width:184px;
+	height:58px;
+	text-align:right;
+	/* background-color:rgba(0, 255, 0, .5); */
+}
+
+.player-bet {background:blue;}
+.player-balance {background:brown;}
