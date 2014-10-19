@@ -225,7 +225,21 @@ GAMES.Blackjack = (function() {
 	};
 
 	var whoWins = function() {
-		// TODO
+		if (dealerScore > 21) {
+			$('#hit').css('visibility','hidden');
+			$('#playerScore').html("You Win!");
+		} else if (dealerScore <= 21) {
+			 if (playerScore > dealerScore) {
+				$('#hit').css('visibility','hidden');
+				$('#playerScore').html("You Win!");
+			} else if (playerScore < dealerScore) {
+				$('#hit').css('visibility','hidden');
+				$('#playerScore').html("You lose! Good day, sir! I SAID GOOD DAY!!!");
+			} else {
+				$('#hit').css('visibility','hidden');
+				$('#playerScore').html("Push");
+			}
+		}
 	}
 
 
@@ -248,6 +262,8 @@ GAMES.Blackjack = (function() {
 			dealerCounter += 1;
 			displayDealerScore();
 		};
+
+		whoWins();
 	};
 
 
