@@ -12,7 +12,7 @@ body {
 	left:50%;
 	margin-top:-300px;
 	margin-left:-400px;
-	background:green url("../images/table-bg.jpg") no-repeat 0 0;
+	background:url("../images/table-bg.jpg") no-repeat 0 0;
 	border:2px solid #f6e09f;
 }
 
@@ -112,8 +112,16 @@ button {cursor:pointer;}
 	width:184px;
 	height:58px;
 	text-align:right;
-	/* background-color:rgba(0, 255, 0, .5); */
 }
 
-.player-bet {background:blue;}
-.player-balance {background:brown;}
+.player-bet {
+	position:absolute;
+	bottom:33px;
+	right:14px;
+}
+
+.player-balance {
+	position:absolute;
+	bottom:8px;
+	right:14px;
+}

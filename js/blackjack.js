@@ -3,6 +3,8 @@ GAMES.Blackjack = (function() {
 	"use strict";
 
 	var deck = []; // the deck
+	var playerBet = 5000;
+	var playerBalance = 0;
 
 	var Card = function(position, name, value) {
 		this.position = position;
@@ -122,12 +124,12 @@ GAMES.Blackjack = (function() {
 
 	// keep track of player's and dealer's hand
 	var playerHand = [deck[0], deck[2]],
-		dealerHand = [deck[1], deck[3]];
+		  dealerHand = [deck[1], deck[3]];
 
 
 	// ace counter
 	var playerAceCount = 0,
-		dealerAceCount = 0;
+		  dealerAceCount = 0;
 
 
 	// check to see how many aces were dealt
@@ -151,7 +153,7 @@ GAMES.Blackjack = (function() {
 
 	// start the score at zero
 	var playerScore,
-		dealerScore;
+		  dealerScore;
 
 	var updateScore = function() {
 		playerScore = (deck[0].value) + (deck[2].value);
@@ -169,6 +171,16 @@ GAMES.Blackjack = (function() {
 	var displayDealerScore = function() {
 		$('#dealerScore span').html(dealerScore);
 	}
+
+	// display Player Bet amount
+	var updatePlayerScoreboard = function() {
+		$('#playerBet span').html(playerBet.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+		$('#playerBalance span').html(playerBalance.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+
+		if (playerBalance < 0) {
+			$('#playerBalance span').css('color','red');
+		}
+}
 
 
 	// let's play!
@@ -206,9 +218,15 @@ GAMES.Blackjack = (function() {
 			} else { // otherwise, the player loses
 				$('#hit').css('visibility','hidden');
 				$('#playerScore').html("You bust, sucka!");
+				playerBalance = playerBalance - playerBet;
+				updatePlayerScoreboard();
 			}
 		}
 	};
+
+	var whoWins = function() {
+		// TODO
+	}
 
 
 	// dealer's turn
@@ -251,6 +269,18 @@ GAMES.Blackjack = (function() {
 
 	return {
 		init: function() {
+			/*shuffle(deck);
+			showDeckInConsole();
+			aceCheck();
+			deal();
+			updateScore();
+			displayPlayerScore();
+			displayDealerScore();
+			displayPlayerBet();
+			displayPlayerBalance();
+			events();*/
+		},
+		play: function() {
 			shuffle(deck);
 			showDeckInConsole();
 			aceCheck();
@@ -258,9 +288,14 @@ GAMES.Blackjack = (function() {
 			updateScore();
 			displayPlayerScore();
 			displayDealerScore();
-			events();
+			updatePlayerScoreboard();
+			events();		
 		}
 	}
 }());
 
 GAMES.Blackjack.init();
+
+$('#goButton').on('click', function() {
+	GAMES.Blackjack.play();
+});
