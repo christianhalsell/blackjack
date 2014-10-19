@@ -85,7 +85,9 @@ GAMES.Blackjack = (function() {
 
 	// shuffle the deck
 	var shuffle = function(array) {
-		var counter = array.length, temp, index;
+		var counter = array.length,
+				temp,
+				index;
 
 		// while there are elements in the array
 		while (counter > 0) {
@@ -102,16 +104,14 @@ GAMES.Blackjack = (function() {
 		}
 
 		return array;
-	}
-
+	};
 
 	// show shuffled deck in console
 	var showDeckInConsole = function() {
 		for (var i in deck) {
 			console.log(i + ") " + deck[i].name);
 		}
-	}
-
+	};
 
 	// deal the first four cards
 	var deal = function() {
@@ -119,8 +119,7 @@ GAMES.Blackjack = (function() {
 		$('#dealerCard1').addClass(deck[1].position);
 		$('#playerCard2').addClass(deck[2].position);
 		$('#dealerCard2').addClass(deck[3].position);
-	}
-
+	};
 
 	// keep track of player's and dealer's hand
 	var playerHand = [deck[0], deck[2]],
