@@ -3,7 +3,6 @@
 <head>
 	<meta charset="utf-8">
 	<title>Blackjack</title>
-	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 	<link type="text/css" rel="stylesheet" href="css/styles.css">
 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -14,23 +13,34 @@
 
 <body>
 	<div class="container">
-		<div id="playerCard1" class="card"></div>
-		<div id="playerCard2" class="card"></div>
+		<div id="playerCards">
+			<div id="playerCard1" class="card"></div>
+			<div id="playerCard2" class="card"></div>
+		</div>
 
-		<div id="dealerCard1" class="card overturn"></div>
-		<div id="dealerCard2" class="card"></div>
+		<div id="dealerCards">
+			<div id="dealerCard1" class="card overturn"></div>
+			<div id="dealerCard2" class="card"></div>
+		</div>
 
 		<button id="refresh" onClick="window.location.reload()">Reload</button><br>
 		<button id="hide">Show Card</button>
 		<br>
 		<br>
-		<button id="hit">Hit</button>
-		<button id="hold">Hold</button>
+		<button id="btnHit">Hit</button>
+		<button id="btnHold">Hold</button>
 		<br>
 		<br>
 		<div id="dealerScore">Dealer Score: <span>--</span></div>
 		<div id="playerScore">Player Score: <span>--</span></div>
-		<button id="goButton">GO</button>
+		<div id="status"></div>
+
+		<button id="btnDeal">Deal</button>
+		<br>
+		<button id="chip500">$500</button>
+		<button id="chip100">$100</button>
+		<button id="chip25">$25</button>
+		<button id="chip5">$5</button>
 
 		<div class="scoreboard">
 			<div id="playerBet" class="player-bet">$<span>-</span></div>

@@ -3,8 +3,8 @@ GAMES.Blackjack = (function() {
 	"use strict";
 
 	var deck = []; // the deck
-	var playerBet = 5000;
-	var playerBalance = 0;
+	var playerBet = 0;
+	var playerBalance = 5000;
 
 	var Card = function(position, name, value) {
 		this.position = position;
@@ -200,16 +200,24 @@ GAMES.Blackjack = (function() {
 		updatePlayerScoreboard();
 	}
 
-	// let's play!
 	var deckCounter = 4,
 		playerCounter = 3,
-		dealerCounter = 3,
-		playerCard = '<div id="playerCard' + playerCounter + '" class="card '+ deck[deckCounter].position + '"></div>',
-		dealerCard;
+		dealerCounter = 3;
+
+	var playerCard = function() {
+		return '<div id="playerCard' + playerCounter + '" class="card '+ deck[deckCounter].position + '"></div>';
+	};
+
+	var dealerCard = function() {
+		return '<div id="dealerCard' + dealerCounter + '" class="card '+ deck[deckCounter].position + '"></div>'
+	};
+
+	// LET'S PLAY!
 
 	// player's turn
 	var playerHit = function() {
-		// where do the cards go?
+		console.log(deckCounter);
+		console.log(deck[deckCounter].name);
 		$('.container').append(playerCard);
 
 		// check to see if player's new card is an ace
@@ -233,7 +241,7 @@ GAMES.Blackjack = (function() {
 				displayPlayerScore();
 			} else { // otherwise, the player loses
 				hideHit();
-				$('#playerScore').html("You bust, sucka!");
+				$('#status').html("You bust, sucka!");
 				playerBalance = playerBalance - playerBet;
 				updatePlayerScoreboard();
 			}
@@ -243,17 +251,17 @@ GAMES.Blackjack = (function() {
 	var whoWins = function() {
 		if (dealerScore > 21) {
 			$('#hit').css('visibility','hidden');
-			$('#playerScore').html("You Win!");
+			$('#status').html("You Win!");
 		} else if (dealerScore <= 21) {
 			 if (playerScore > dealerScore) {
 				hideHit();
-				$('#playerScore').html("You Win!");
+				$('#status').html("You Win!");
 			} else if (playerScore < dealerScore) {
 				hideHit();
-				$('#playerScore').html("You lose! Good day, sir! I SAID GOOD DAY!!!");
+				$('#status').html("You lose! Good day, sir! I SAID GOOD DAY!!!");
 			} else {
 				hideHit();
-				$('#playerScore').html("Push");
+				$('#status').html("Push");
 			}
 		}
 	}
@@ -263,7 +271,7 @@ GAMES.Blackjack = (function() {
 	var dealerTurn = function() {
 		// dealer plays on anything below 17
 		while (dealerScore < 17) {
-			dealerCard = '<div id="dealerCard' + dealerCounter + '" class="card '+ deck[deckCounter].position + '"></div>';
+			//dealerCard = '<div id="dealerCard' + dealerCounter + '" class="card '+ deck[deckCounter].position + '"></div>';
 			$('.container').append(dealerCard);
 
 			// check to see if dealer's new card is an ace
@@ -295,22 +303,13 @@ GAMES.Blackjack = (function() {
 
 	var events = function() {
 		$('#hide').on('click', showCard);
-		$('#hit').on('click', playerHit);
-		$('#hold').on('click', playerHold);
+		$('#btnHit').on('click', playerHit);
+		$('#btnHold').on('click', playerHold);
 	};
 
 	return {
 		init: function() {
-			/*shuffle(deck);
-			showDeckInConsole();
-			aceCheck();
-			deal();
-			updateScore();
-			displayPlayerScore();
-			displayDealerScore();
-			displayPlayerBet();
-			displayPlayerBalance();
-			events();*/
+			updatePlayerScoreboard();
 		},
 		play: function() {
 			shuffle(deck);
@@ -328,6 +327,6 @@ GAMES.Blackjack = (function() {
 
 GAMES.Blackjack.init();
 
-$('#goButton').on('click', function() {
+$('#btnDeal').on('click', function() {
 	GAMES.Blackjack.play();
 });

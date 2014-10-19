@@ -3,13 +3,8 @@ body {
 	font-family:verdana, arial, sans-serif;
 }
 
-.hide {
-	display:none;
-};
-
-.invisible {
-	visibility: hidden;
-}
+.hide {display:none};
+.invisible {visibility: hidden}
 
 .container {
 	position:absolute;
@@ -28,7 +23,6 @@ body {
 	background:url("../images/cards.gif") no-repeat 0 -469px;
 	height:118px;
 	position:absolute;
-	text-shadow:0 1px 0 #fff; font:bold 14px verdana, arial, sans-serif; /* to display card name */
 	width:81px;
 }
 
@@ -102,14 +96,16 @@ body {
 #dealerCard6 {left:500px; top:16px}
 
 button {cursor:pointer;}
-#hit {background:#9f8;}
-#hold {background:orange;}
+#btnHit {background:#9f8;}
+#btnHold {background:orange;}
+#btnDeal {}
 
 #playerScore,
 #dealerScore {color:#fff; font-size:15px; text-shadow: 1px 1px 2px #000;}
 
 #playerScore span,
-#dealerScore span {color:yellow; font-weight: bold}
+#dealerScore span,
+#status {color:yellow; font-weight: bold}
 
 .scoreboard {
 	color:#fff;
