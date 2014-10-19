@@ -3,6 +3,14 @@ body {
 	font-family:verdana, arial, sans-serif;
 }
 
+.hide {
+	display:none;
+};
+
+.invisible {
+	visibility: hidden;
+}
+
 .container {
 	position:absolute;
 	padding:10px;

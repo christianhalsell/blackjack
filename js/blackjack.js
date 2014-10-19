@@ -158,19 +158,19 @@ GAMES.Blackjack = (function() {
 	var updateScore = function() {
 		playerScore = (deck[0].value) + (deck[2].value);
 		dealerScore = (deck[1].value) + (deck[3].value);
-	}
+	};
 
 
 	// display Player score
 	var displayPlayerScore = function() {
 		$('#playerScore span').html(playerScore);
-	}
+	};
 
 
 	// display Dealer score
 	var displayDealerScore = function() {
 		$('#dealerScore span').html(dealerScore);
-	}
+	};
 
 	// display Player Bet amount
 	var updatePlayerScoreboard = function() {
@@ -180,20 +180,36 @@ GAMES.Blackjack = (function() {
 		if (playerBalance < 0) {
 			$('#playerBalance span').css('color','red');
 		}
-}
+	};
 
+	var hideHit = function() {
+		$('#hit').addClass('invisible');
+	};
+
+	var hideHold = function() {
+		$('#hold').addClass('invisible');
+	};
+
+	var youWin = function() {
+		playerBalance = playerBalance + playerBet;
+		updatePlayerScoreboard();
+	}
+
+	var youLose = function() {
+		playerBalance = playerBalance - playerBet;
+		updatePlayerScoreboard();
+	}
 
 	// let's play!
 	var deckCounter = 4,
 		playerCounter = 3,
 		dealerCounter = 3,
-		playerCard,
+		playerCard = '<div id="playerCard' + playerCounter + '" class="card '+ deck[deckCounter].position + '"></div>',
 		dealerCard;
 
 	// player's turn
 	var playerHit = function() {
 		// where do the cards go?
-		playerCard = '<div id="playerCard' + playerCounter + '" class="card '+ deck[deckCounter].position + '"></div>';
 		$('.container').append(playerCard);
 
 		// check to see if player's new card is an ace
@@ -216,7 +232,7 @@ GAMES.Blackjack = (function() {
 				playerAceCount -= 1;
 				displayPlayerScore();
 			} else { // otherwise, the player loses
-				$('#hit').css('visibility','hidden');
+				hideHit();
 				$('#playerScore').html("You bust, sucka!");
 				playerBalance = playerBalance - playerBet;
 				updatePlayerScoreboard();
@@ -230,13 +246,13 @@ GAMES.Blackjack = (function() {
 			$('#playerScore').html("You Win!");
 		} else if (dealerScore <= 21) {
 			 if (playerScore > dealerScore) {
-				$('#hit').css('visibility','hidden');
+				hideHit();
 				$('#playerScore').html("You Win!");
 			} else if (playerScore < dealerScore) {
-				$('#hit').css('visibility','hidden');
+				hideHit();
 				$('#playerScore').html("You lose! Good day, sir! I SAID GOOD DAY!!!");
 			} else {
-				$('#hit').css('visibility','hidden');
+				hideHit();
 				$('#playerScore').html("Push");
 			}
 		}
@@ -269,8 +285,8 @@ GAMES.Blackjack = (function() {
 
 	var playerHold = function() {
 		// deactivate hit and hold buttons
-		$('#hit').css('visibility','hidden');
-		$('#hold').css('visibility','hidden');
+		hideHit();
+		hideHold();
 
 		// show the overturned card
 		$('#dealerCard1').removeClass('overturn');
