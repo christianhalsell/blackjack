@@ -128,7 +128,7 @@ GAMES.Blackjack = (function() {
 
 	// ace counter
 	var playerAceCount = 0,
-		  dealerAceCount = 0;
+		dealerAceCount = 0;
 
 
 	// check to see how many aces were dealt
@@ -300,15 +300,27 @@ GAMES.Blackjack = (function() {
 		dealerTurn();
 	};
 
+	var chipBet = function (chipValue) {
+		playerBet += chipValue;
+		playerBalance -= chipValue;
+		updatePlayerScoreboard();
+	};
+
 	var events = function() {
 		$('#hide').on('click', showCard);
 		$('#btnHit').on('click', playerHit);
 		$('#btnHold').on('click', playerHold);
+
+		$('#chip500').on('click', function() { chipBet(500) });
+		$('#chip100').on('click', function() { chipBet(100) });
+		$('#chip25').on('click', function() { chipBet(25) });
+		$('#chip5').on('click', function() { chipBet(5) });
 	};
 
 	return {
 		init: function() {
 			updatePlayerScoreboard();
+			events();
 		},
 		play: function() {
 			shuffle(deck);
@@ -319,7 +331,6 @@ GAMES.Blackjack = (function() {
 			displayPlayerScore();
 			displayDealerScore();
 			updatePlayerScoreboard();
-			events();		
 		}
 	}
 }());
