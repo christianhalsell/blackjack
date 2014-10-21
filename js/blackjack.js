@@ -189,16 +189,6 @@ GAMES.Blackjack = (function() {
 		$('#hold').addClass('invisible');
 	};
 
-	var youWin = function() {
-		playerBalance = playerBalance + playerBet;
-		updatePlayerScoreboard();
-	}
-
-	var youLose = function() {
-		playerBalance = playerBalance - playerBet;
-		updatePlayerScoreboard();
-	}
-
 	var deckCounter = 4,
 		playerCounter = 3,
 		dealerCounter = 3;
@@ -241,7 +231,7 @@ GAMES.Blackjack = (function() {
 			} else { // otherwise, the player loses
 				hideHit();
 				$('#status').html("You bust, sucka!");
-				playerBalance = playerBalance - playerBet;
+				playerBet = 0;
 				updatePlayerScoreboard();
 			}
 		}
@@ -251,16 +241,27 @@ GAMES.Blackjack = (function() {
 		if (dealerScore > 21) {
 			$('#hit').css('visibility','hidden');
 			$('#status').html("You Win!");
+			playerBalance = playerBalance + (playerBet * 2);
+			playerBet = 0;
+			updatePlayerScoreboard();
 		} else if (dealerScore <= 21) {
 			 if (playerScore > dealerScore) {
 				hideHit();
 				$('#status').html("You Win!");
+				playerBalance = playerBalance + (playerBet * 2);
+				playerBet = 0;
+				updatePlayerScoreboard();
 			} else if (playerScore < dealerScore) {
 				hideHit();
 				$('#status').html("You lose! Good day, sir! I SAID GOOD DAY!!!");
+				playerBet = 0;
+				updatePlayerScoreboard();
 			} else {
 				hideHit();
 				$('#status').html("Push");
+				playerBalance = playerBalance + playerBet;
+				playerBet = 0;
+				updatePlayerScoreboard();
 			}
 		}
 	}
@@ -301,9 +302,13 @@ GAMES.Blackjack = (function() {
 	};
 
 	var chipBet = function (chipValue) {
-		playerBet += chipValue;
-		playerBalance -= chipValue;
-		updatePlayerScoreboard();
+		if (chipValue <= playerBalance) {
+			playerBet += chipValue;
+			playerBalance -= chipValue;
+			updatePlayerScoreboard();
+		} else {
+			alert("Can't bet any more");
+		}
 	};
 
 	var events = function() {
