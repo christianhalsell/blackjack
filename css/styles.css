@@ -23,12 +23,14 @@ body {
 	position:absolute;
 	left:350px;
 	top:216px;
+	padding-left:51px;
 }
 
 #dealerCards {
 	position:absolute;
 	left:350px;
 	top:16px;
+	padding-left:51px;
 }
 
 .card {
