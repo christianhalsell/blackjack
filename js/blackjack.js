@@ -183,13 +183,13 @@ GAMES.Blackjack = (function() {
 
 	// display Player score
 	var displayPlayerScore = function() {
-		$('#playerScore span').html(playerScore);
+		$('#playerScore').html(playerScore);
 	}
 
 
 	// display Dealer score
 	var displayDealerScore = function() {
-		$('#dealerScore span').html(dealerScore);
+		$('#dealerScore').html(dealerScore);
 	}
 
 	// display Player Bet amount
