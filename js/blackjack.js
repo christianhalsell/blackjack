@@ -214,8 +214,6 @@ GAMES.Blackjack = (function() {
 
 	// player's turn
 	var playerHit = function() {
-		console.log(deckCounter);
-		console.log(deck[deckCounter].name);
 		$('#playerCards').append(playerCard);
 
 		// check to see if player's new card is an ace
@@ -336,7 +334,13 @@ GAMES.Blackjack = (function() {
 			updatePlayerScoreboard();
 			events();
 		},
-		play: function() {
+		bet: function() {
+			$('.chip').removeClass('hide');
+			$('#dealerScore, #playerScore, #status').addClass('hide');
+		},
+		deal: function() {
+			$('.chip').addClass('hide');			
+			$('#dealerScore, #playerScore, #status').removeClass('hide');
 			shuffle(deck);
 			showDeckInConsole();
 			aceCheck();
@@ -352,5 +356,9 @@ GAMES.Blackjack = (function() {
 GAMES.Blackjack.init();
 
 $('#btnDeal').on('click', function() {
-	GAMES.Blackjack.play();
+	GAMES.Blackjack.deal();
+});
+
+$('#btnBet').on('click', function() {
+	GAMES.Blackjack.bet();
 });
