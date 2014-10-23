@@ -19,10 +19,24 @@ body {
 	border:2px solid #f6e09f;
 }
 
+#playerCards {
+	position:absolute;
+	left:350px;
+	top:216px;
+}
+
+#dealerCards {
+	position:absolute;
+	left:350px;
+	top:16px;
+}
+
 .card {
 	background:url("../images/cards.gif") no-repeat 0 -469px;
 	height:118px;
-	position:absolute;
+	float:left;
+	margin-left:-51px;
+	xxxposition:absolute;
 	width:81px;
 }
 
@@ -81,7 +95,7 @@ body {
 
 .overturn {background-position:0 -469px !important}
 
-#playerCard1 {left:350px; top:216px}
+/*# playerCard1 {left:350px; top:216px}
 #playerCard2 {left:380px; top:216px}
 #playerCard3 {left:410px; top:216px}
 #playerCard4 {left:440px; top:216px}
@@ -93,7 +107,7 @@ body {
 #dealerCard3 {left:410px; top:16px}
 #dealerCard4 {left:440px; top:16px}
 #dealerCard5 {left:470px; top:16px}
-#dealerCard6 {left:500px; top:16px}
+#dealerCard6 {left:500px; top:16px} */
 
 button {cursor:pointer;}
 #btnHit {background:#9f8;}
