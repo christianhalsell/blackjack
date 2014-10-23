@@ -240,6 +240,7 @@ GAMES.Blackjack = (function() {
 				$('#status').html("You bust, sucka!");
 				playerBet = 0;
 				updatePlayerScoreboard();
+				$('#btnBet').removeClass('hide');
 			}
 		}
 	};
@@ -250,7 +251,8 @@ GAMES.Blackjack = (function() {
 			$('#status').html("You Win!");
 			playerBalance = playerBalance + (playerBet * 2);
 			playerBet = 0;
-			updatePlayerScoreboard();
+			updatePlayerScoreboard();		
+			$('#btnBet').removeClass('hide');
 		} else if (dealerScore <= 21) {
 			 if (playerScore > dealerScore) {
 				hideHit();
@@ -258,17 +260,20 @@ GAMES.Blackjack = (function() {
 				playerBalance = playerBalance + (playerBet * 2);
 				playerBet = 0;
 				updatePlayerScoreboard();
+				$('#btnBet').removeClass('hide');
 			} else if (playerScore < dealerScore) {
 				hideHit();
 				$('#status').html("You lose! Good day, sir!");
 				playerBet = 0;
 				updatePlayerScoreboard();
+				$('#btnBet').removeClass('hide');
 			} else {
 				hideHit();
 				$('#status').html("Push");
 				playerBalance = playerBalance + playerBet;
 				playerBet = 0;
 				updatePlayerScoreboard();
+				$('#btnBet').removeClass('hide');
 			}
 		}
 	}
@@ -335,12 +340,14 @@ GAMES.Blackjack = (function() {
 			events();
 		},
 		bet: function() {
-			$('.chip').removeClass('hide');
-			$('#dealerScore, #playerScore, #status').addClass('hide');
+			$('.chip, #btnDeal').removeClass('hide');
+			$('#dealerScore, #playerScore, #btnBet').addClass('hide');
+			$('#status').html('');
+			$('#playerCards, #dealerCards').html('');
 		},
 		deal: function() {
-			$('.chip').addClass('hide');			
-			$('#dealerScore, #playerScore, #status').removeClass('hide');
+			$('.chip, #btnDeal').addClass('hide');			
+			$('#dealerScore, #playerScore').removeClass('hide');
 			shuffle(deck);
 			showDeckInConsole();
 			aceCheck();
