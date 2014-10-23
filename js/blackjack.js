@@ -113,6 +113,18 @@ GAMES.Blackjack = (function() {
 		}
 	};
 
+	var deckCounter = 4,
+		playerCounter = 3,
+		dealerCounter = 3;
+
+	var playerCard = function() {
+		return '<div id="playerCard' + playerCounter + '" class="card '+ deck[deckCounter].position + '"></div>';
+	};
+
+	var dealerCard = function() {
+		return '<div id="dealerCard' + dealerCounter + '" class="card '+ deck[deckCounter].position + '"></div>'
+	};
+
 	// deal the first four cards
 	var deal = function() {
 		$('#playerCard1').addClass(deck[0].position);
@@ -187,18 +199,6 @@ GAMES.Blackjack = (function() {
 
 	var hideHold = function() {
 		$('#hold').addClass('invisible');
-	};
-
-	var deckCounter = 4,
-		playerCounter = 3,
-		dealerCounter = 3;
-
-	var playerCard = function() {
-		return '<div id="playerCard' + playerCounter + '" class="card '+ deck[deckCounter].position + '"></div>';
-	};
-
-	var dealerCard = function() {
-		return '<div id="dealerCard' + dealerCounter + '" class="card '+ deck[deckCounter].position + '"></div>'
 	};
 
 	// LET'S PLAY!
