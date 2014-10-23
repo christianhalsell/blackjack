@@ -33,12 +33,24 @@ body {
 	padding-left:51px;
 }
 
+#dealerScore {
+	position:absolute;
+	text-align:center;
+	width:20px;
+	height:18px;
+	padding:2px 4px;
+	color:#fff;
+	border:1px solid black;
+	background:red;
+	left:321px;
+	top:16px;
+}
+
 .card {
 	background:url("../images/cards.gif") no-repeat 0 -469px;
 	height:118px;
 	float:left;
 	margin-left:-51px;
-	xxxposition:absolute;
 	width:81px;
 }
 
@@ -114,13 +126,13 @@ body {
 button {cursor:pointer;}
 #btnHit {background:#9f8;}
 #btnHold {background:orange;}
-#btnDeal {}
+#btnDeal {background:aquamarine;}
+#btnBet {background:cyan;}
 
 #playerScore,
 #dealerScore {color:#fff; font-size:15px; text-shadow: 1px 1px 2px #000;}
 
 #playerScore span,
-#dealerScore span,
 #status {color:yellow; font-weight: bold}
 
 .scoreboard {
