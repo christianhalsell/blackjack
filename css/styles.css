@@ -33,18 +33,6 @@ body {
 	padding-left:51px;
 }
 
-#playerScore,
-#dealerScore {
-	position:absolute;
-	text-align:center;
-	width:20px;
-	height:18px;
-	padding:2px 4px;
-	color:#fff;
-	border:1px solid black;
-	background:red;
-}
-
 #playerScore {
 	left:321px;
 	top:216px;
@@ -118,20 +106,6 @@ body {
 
 .overturn {background-position:0 -469px !important}
 
-/*# playerCard1 {left:350px; top:216px}
-#playerCard2 {left:380px; top:216px}
-#playerCard3 {left:410px; top:216px}
-#playerCard4 {left:440px; top:216px}
-#playerCard5 {left:470px; top:216px}
-#playerCard6 {left:500px; top:216px}
-
-#dealerCard1 {left:350px; top:16px}
-#dealerCard2 {left:380px; top:16px}
-#dealerCard3 {left:410px; top:16px}
-#dealerCard4 {left:440px; top:16px}
-#dealerCard5 {left:470px; top:16px}
-#dealerCard6 {left:500px; top:16px} */
-
 button {cursor:pointer;}
 #btnHit {background:#9f8;}
 #btnHold {background:orange;}
@@ -139,7 +113,18 @@ button {cursor:pointer;}
 #btnBet {background:cyan;}
 
 #playerScore,
-#dealerScore {color:#fff; font-size:15px; text-shadow: 1px 1px 2px #000;}
+#dealerScore {
+	position:absolute;
+	text-align:center;
+	width:20px;
+	font-size:12px;
+	xxxheight:18px;
+	padding:2px 4px;
+	color:#fff;
+	text-shadow: 1px 1px 2px #000;
+	border:1px solid black;
+	background:red;
+}
 
 #status {color:yellow; font-weight: bold}
 
