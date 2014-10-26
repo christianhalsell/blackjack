@@ -4,7 +4,7 @@ GAMES.Blackjack = (function() {
 
 	var deck = []; // the deck
 	var playerBet = 0;
-	var playerBalance = 5000;
+	var playerBalance = 500; // starting balance
 
 	var Card = function(position, name, value) {
 		this.position = position;
@@ -129,7 +129,7 @@ GAMES.Blackjack = (function() {
 		return '<div id="dealerCard' + dealerCounter + '" class="card '+ deck[deckCounter].position + '"></div>'
 	}
 
-	
+
 	var playerInitCards = '<div id="playerCard1" class="card"></div> <div id="playerCard2" class="card"></div>'
 	var dealerInitCards = '<div id="dealerCard1" class="card overturn"></div>	<div id="dealerCard2" class="card"></div>'
 
@@ -169,6 +169,8 @@ GAMES.Blackjack = (function() {
 				playerAceCount += 1;
 			}	
 		}
+
+		// TODO: What if there are two aces?
 
 		console.log("Dealer has " + dealerAceCount + " aces.");
 		console.log("Player has " + playerAceCount + " aces.");
