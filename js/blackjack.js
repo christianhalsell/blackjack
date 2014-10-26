@@ -113,10 +113,6 @@ GAMES.Blackjack = (function() {
 		}
 	}
 
-	/* var deckCounter = 4,
-		playerCounter = 3,
-		dealerCounter = 3; */
-
 	var deckCounter = 4,
 		playerCounter = 3,
 		dealerCounter = 3;
