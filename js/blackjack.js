@@ -129,6 +129,10 @@ GAMES.Blackjack = (function() {
 		return '<div id="dealerCard' + dealerCounter + '" class="card '+ deck[deckCounter].position + '"></div>'
 	}
 
+	
+	var playerInitCards = '<div id="playerCard1" class="card"></div> <div id="playerCard2" class="card"></div>'
+	var dealerInitCards = '<div id="dealerCard1" class="card overturn"></div>	<div id="dealerCard2" class="card"></div>'
+
 	// deal the first four cards
 	var deal = function() {
 		var playerInitCards = '<div id="playerCard1" class="card"></div> <div id="playerCard2" class="card"></div>'
@@ -307,8 +311,7 @@ GAMES.Blackjack = (function() {
 		// deactivate hit and hold buttons
 		hideHit();
 		hideHold();
-
-		// show the overturned card
+		$('#dealerScore').removeClass('hide');
 		$('#dealerCard1').removeClass('overturn');
 		dealerTurn();
 	};
@@ -341,13 +344,12 @@ GAMES.Blackjack = (function() {
 		},
 		bet: function() {
 			$('.chip, #btnDeal').removeClass('hide');
-			$('#dealerScore, #playerScore, #btnBet').addClass('hide');
-			$('#status').html('');
-			$('#playerCards, #dealerCards').html('');
+			$('#dealerScore, #playerScore, #btnBet, #btnHit, #btnHold').addClass('hide');
+			$('#status, #playerCards, #dealerCards').html('');
 		},
 		deal: function() {
 			$('.chip, #btnDeal').addClass('hide');			
-			$('#dealerScore, #playerScore').removeClass('hide');
+			$('#playerScore, #btnHit, #btnHold').removeClass('hide');
 			shuffle(deck);
 			showDeckInConsole();
 			aceCheck();
