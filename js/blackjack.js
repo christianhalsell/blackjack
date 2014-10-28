@@ -166,8 +166,6 @@ GAMES.Blackjack = (function() {
 			}	
 		}
 
-		// TODO: What if there are two aces?
-
 		console.log("Dealer has " + dealerAceCount + " aces.");
 		console.log("Player has " + playerAceCount + " aces.");
 	}
@@ -180,6 +178,16 @@ GAMES.Blackjack = (function() {
 	var updateScore = function() {
 		playerScore = (deck[0].value) + (deck[2].value);
 		dealerScore = (deck[1].value) + (deck[3].value);
+
+		if (dealerAceCount === 2) {
+			dealerScore = 12;
+			dealerAceCount = 1;
+		}
+
+		if (playerAceCount === 2) {
+			playerScore = 12;
+			playerAceCount = 1;
+		}
 	}
 
 
@@ -285,7 +293,6 @@ GAMES.Blackjack = (function() {
 	var dealerTurn = function() {
 		// dealer plays on anything below 17
 		while (dealerScore < 17) {
-			//dealerCard = '<div id="dealerCard' + dealerCounter + '" class="card '+ deck[deckCounter].position + '"></div>';
 			$('#dealerCards').append(dealerCard);
 
 			// check to see if dealer's new card is an ace
