@@ -251,6 +251,7 @@ GAMES.Blackjack = (function() {
 				playerBet = 0;
 				updatePlayerScoreboard();
 				$('#btnBet').removeClass('hide');
+				$('#btnHit, #btnHold').addClass('hide');
 			}
 		}
 	};
@@ -263,6 +264,7 @@ GAMES.Blackjack = (function() {
 			playerBet = 0;
 			updatePlayerScoreboard();		
 			$('#btnBet').removeClass('hide');
+			$('#btnHit, #btnHold').addClass('hide');
 		} else if (dealerScore <= 21) {
 			 if (playerScore > dealerScore) {
 				hideHit();
@@ -271,12 +273,14 @@ GAMES.Blackjack = (function() {
 				playerBet = 0;
 				updatePlayerScoreboard();
 				$('#btnBet').removeClass('hide');
+				$('#btnHit, #btnHold').addClass('hide');
 			} else if (playerScore < dealerScore) {
 				hideHit();
 				$('#status').html("You lose! Good day, sir!");
 				playerBet = 0;
 				updatePlayerScoreboard();
 				$('#btnBet').removeClass('hide');
+				$('#btnHit, #btnHold').addClass('hide');
 			} else {
 				hideHit();
 				$('#status').html("Push");
@@ -284,6 +288,7 @@ GAMES.Blackjack = (function() {
 				playerBet = 0;
 				updatePlayerScoreboard();
 				$('#btnBet').removeClass('hide');
+				$('#btnHit, #btnHold').addClass('hide');
 			}
 		}
 	}

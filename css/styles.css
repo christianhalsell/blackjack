@@ -200,3 +200,21 @@ button {cursor:pointer;}
 	left:363px;
 	background:url(../images/btn-deal.png) no-repeat 0 0;
 }
+
+.btn-hit {
+	left:363px;
+	top:488px;
+	background:url(../images/btn-hit.png) no-repeat 0 0;
+}
+
+.btn-hold {
+	left:448px;
+	top:484px;
+	background:url(../images/btn-hold.png) no-repeat 0 0;
+}
+
+.btn-bet {
+	left:363px;
+	top:488px;
+	background:url(../images/btn-bet.png) no-repeat 0 0;	
+}
