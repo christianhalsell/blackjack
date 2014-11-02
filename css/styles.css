@@ -187,8 +187,8 @@ button {cursor:pointer;}
 }
 
 .btn-round {
-	width:80px;
-	height:80px;
+	width:74px;
+	height:74px;
 	border:0;
 	outline:0;
 	text-indent: -9999px;
@@ -196,7 +196,7 @@ button {cursor:pointer;}
 }
 
 .btn-deal {
-	bottom:58px;
-	left:360px;
-	background:red url(../images/btn-bet.png) no-repeat 0 0;
+	bottom:38px;
+	left:363px;
+	background:url(../images/btn-deal.png) no-repeat 0 0;
 }
