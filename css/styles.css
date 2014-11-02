@@ -154,37 +154,49 @@ button {cursor:pointer;}
 	outline:0;
 	text-indent:-99999px;
 	position:absolute;
+	background-color:transparent;
+	background-image:url(../images/sprites-pokerchips.png);
 }
 
 .chip-500 {
 	left:722px;
 	top:401px;
-	background:url(../images/chip-500.png) no-repeat 0 0;
+	background-position:-264px 0;
 }
+
+.chip-500:hover {background-position:-264px -66px}
 
 .chip-100 {
 	left:669px;
 	top:422px;
-	background:url(../images/chip-100.png) no-repeat 0 0;
+	background-position:-198px 0;
 }
+
+.chip-100:hover {background-position:-198px -66px}
 
 .chip-25 {
 	left:615px;
 	top:438px;
-	background:url(../images/chip-25.png) no-repeat 0 0;
+	background-position:-132px 0;
 }
+
+.chip-25:hover {background-position:-132px -66px}
 
 .chip-5 {
 	left:561px;
 	top:450px;
-	background:url(../images/chip-5.png) no-repeat 0 0;
+	background-position:-66px 0;
 }
+
+.chip-5:hover {background-position:-66px -66px}
 
 .chip-clear {
 	left:507px;
 	top:459px;
-	background:yellow;
+	background-position:0 0;
 }
+
+.chip-clear:hover {background-position:0 -66px}
 
 .btn-round {
 	width:94px;
