@@ -189,3 +189,9 @@ button {cursor:pointer;}
 	top:467px;
 	background:yellow;
 }
+
+.btn-round {
+	width:70px;
+	height:70px;
+	position:relative;
+}
