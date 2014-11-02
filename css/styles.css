@@ -148,8 +148,8 @@ button {cursor:pointer;}
 }
 
 .chip {
-	width:50px;
-	height:50px;
+	width:66px;
+	height:66px;
 	border:none;
 	outline:0;
 	text-indent:-99999px;
@@ -157,32 +157,32 @@ button {cursor:pointer;}
 }
 
 .chip-500 {
-	left:730px;
-	top:409px;
+	left:722px;
+	top:401px;
 	background:url(../images/chip-500.png) no-repeat 0 0;
 }
 
 .chip-100 {
-	left:677px;
-	top:430px;
+	left:669px;
+	top:422px;
 	background:url(../images/chip-100.png) no-repeat 0 0;
 }
 
 .chip-25 {
-	left:623px;
-	top:446px;
+	left:615px;
+	top:438px;
 	background:url(../images/chip-25.png) no-repeat 0 0;
 }
 
 .chip-5 {
-	left:569px;
-	top:458px;
+	left:561px;
+	top:450px;
 	background:url(../images/chip-5.png) no-repeat 0 0;
 }
 
 .chip-clear {
-	left:515px;
-	top:467px;
+	left:507px;
+	top:459px;
 	background:yellow;
 }
 
