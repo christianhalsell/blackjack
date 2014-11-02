@@ -187,34 +187,45 @@ button {cursor:pointer;}
 }
 
 .btn-round {
-	width:74px;
-	height:74px;
+	width:94px;
+	height:94px;
 	border:0;
 	outline:0;
 	text-indent: -9999px;
 	position:absolute;
+	background-image:url(../images/sprites-buttons.png);
+	background-color:transparent;
+	background-repeat: no-repeat;
 }
 
 .btn-deal {
-	bottom:38px;
-	left:363px;
-	background:url(../images/btn-deal.png) no-repeat 0 0;
+	left:353px;
+	top:478px;
+	background-position:-282px 0;
 }
+
+.btn-deal:hover {background-position:-282px -94px}
 
 .btn-hit {
-	left:363px;
-	top:488px;
-	background:url(../images/btn-hit.png) no-repeat 0 0;
+	left:353px;
+	top:478px;
+	background-position:0 0;
 }
+
+.btn-hit:hover {background-position:0 -94px}
 
 .btn-hold {
-	left:448px;
-	top:484px;
-	background:url(../images/btn-hold.png) no-repeat 0 0;
+	left:438px;
+	top:474px;
+	background-position:-94px 0;
 }
 
+.btn-hold:hover {background-position:-94px -94px}
+
 .btn-bet {
-	left:363px;
-	top:488px;
-	background:url(../images/btn-bet.png) no-repeat 0 0;	
+	left:353px;
+	top:478px;
+	background-position:-188px 0;	
 }
+
+.btn-bet:hover {background-position:-188px -94px}
