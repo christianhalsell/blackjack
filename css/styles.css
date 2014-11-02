@@ -97,10 +97,6 @@ body {
 .overturn {background-position:0 -469px !important}
 
 button {cursor:pointer;}
-#btnHit {background:#9f8;}
-#btnHold {background:orange;}
-#btnDeal {background:aquamarine;}
-#btnBet {background:cyan;}
 
 #playerScore,
 #dealerScore {
@@ -161,8 +157,8 @@ button {cursor:pointer;}
 }
 
 .chip-500 {
-	left:731px;
-	top:408px;
+	left:730px;
+	top:409px;
 	background:url(../images/chip-500.png) no-repeat 0 0;
 }
 
@@ -191,7 +187,16 @@ button {cursor:pointer;}
 }
 
 .btn-round {
-	width:70px;
-	height:70px;
-	position:relative;
+	width:80px;
+	height:80px;
+	border:0;
+	outline:0;
+	text-indent: -9999px;
+	position:absolute;
+}
+
+.btn-deal {
+	bottom:58px;
+	left:360px;
+	background:red url(../images/btn-bet.png) no-repeat 0 0;
 }
