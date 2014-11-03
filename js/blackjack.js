@@ -262,9 +262,9 @@ GAMES.Blackjack = (function() {
 			playerBalance = playerBalance + (playerBet * 2);
 			playerBet = 0;
 			updatePlayerScoreboard();		
-			$('#btnBet').removeClass('hide');
-			$('#btnHit, #btnHold').addClass('hide');
-			
+			// $('#btnBet').removeClass('hide');
+			// $('#btnHit, #btnHold').addClass('hide');
+
 		} else if (dealerScore <= 21) {
 			 if (playerScore > dealerScore) {
 				hideHit();
@@ -272,16 +272,16 @@ GAMES.Blackjack = (function() {
 				playerBalance = playerBalance + (playerBet * 2);
 				playerBet = 0;
 				updatePlayerScoreboard();
-				$('#btnBet').removeClass('hide');
-				$('#btnHit, #btnHold').addClass('hide');
+				// $('#btnBet').removeClass('hide');
+				// $('#btnHit, #btnHold').addClass('hide');
 
 			} else if (playerScore < dealerScore) {
 				hideHit();
 				$('#status').html("You lose! Good day, sir!");
 				playerBet = 0;
 				updatePlayerScoreboard();
-				$('#btnBet').removeClass('hide');
-				$('#btnHit, #btnHold').addClass('hide');
+				// $('#btnBet').removeClass('hide');
+				// $('#btnHit, #btnHold').addClass('hide');
 
 			} else {
 				hideHit();
@@ -289,10 +289,13 @@ GAMES.Blackjack = (function() {
 				playerBalance = playerBalance + playerBet;
 				playerBet = 0;
 				updatePlayerScoreboard();
-				$('#btnBet').removeClass('hide');
-				$('#btnHit, #btnHold').addClass('hide');
+				//$('#btnBet').removeClass('hide');
+				//$('#btnHit, #btnHold').addClass('hide');
 			}
 		}
+
+		$('#btnBet').removeClass('hide');
+		$('#btnHit, #btnHold').addClass('hide');
 	}
 
 
