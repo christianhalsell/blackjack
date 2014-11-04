@@ -126,8 +126,8 @@ GAMES.Blackjack = (function() {
 	}
 
 
-	var playerInitCards = '<div id="playerCard1" class="card"></div> <div id="playerCard2" class="card"></div>'
-	var dealerInitCards = '<div id="dealerCard1" class="card overturn"></div>	<div id="dealerCard2" class="card"></div>'
+	//var playerInitCards = '<div id="playerCard1" class="card"></div> <div id="playerCard2" class="card"></div>'
+	//var dealerInitCards = '<div id="dealerCard1" class="card overturn"></div>	<div id="dealerCard2" class="card"></div>'
 
 	// deal the first four cards
 	var deal = function() {
@@ -159,25 +159,22 @@ GAMES.Blackjack = (function() {
 				dealerAceCount += 1;
 			}
 
-			if (dealerAceCount === 2) {
+			/*if (dealerAceCount === 2) {
 				dealerScore = 12;
 				dealerAceCount = 1;
-			}
+			}*/
 		}
 
 		for (var i = 0; i < playerHand.length; i++) {
 			if (playerHand[i].value === 11) {
-				playerAceCount += 1;
-			}
-
-			if (playerAceCount === 2) {
-				playerScore = 12;
 				playerAceCount = 1;
 			}
-		}
 
-		console.log("Dealer has " + dealerAceCount + " aces.");
-		console.log("Player has " + playerAceCount + " aces.");
+			/*if (playerAceCount === 2) {
+				playerScore = 12;
+				playerAceCount = 1;
+			}*/
+		}
 	}
 
 
@@ -206,10 +203,6 @@ GAMES.Blackjack = (function() {
 	var updatePlayerScoreboard = function() {
 		$('#playerBet span').html(playerBet.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
 		$('#playerBalance span').html(playerBalance.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
-
-		if (playerBalance < 0) {
-			$('#playerBalance span').css('color','red');
-		}
 	}
 
 	var hideHit = function() {
@@ -371,7 +364,7 @@ GAMES.Blackjack = (function() {
 			$('.chip, #btnDeal').addClass('hide');			
 			$('#playerScore, #btnHit, #btnHold').removeClass('hide');
 			shuffle(deck);
-			showDeckInConsole();
+			//showDeckInConsole();
 			aceCheck();
 			deal();
 			updateScore();
