@@ -146,38 +146,6 @@ GAMES.Blackjack = (function() {
 	var playerHand = [deck[0], deck[2]],
 		  dealerHand = [deck[1], deck[3]];
 
-
-	// ace counter
-	var playerAceCount = 0,
-			dealerAceCount = 0;
-
-
-	// check to see how many aces were dealt
-	var aceCheck = function() {
-		for (var i = 0; i < dealerHand.length; i++) {
-			if (dealerHand[i].value === 11) {
-				dealerAceCount += 1;
-			}
-
-			/*if (dealerAceCount === 2) {
-				dealerScore = 12;
-				dealerAceCount = 1;
-			}*/
-		}
-
-		for (var i = 0; i < playerHand.length; i++) {
-			if (playerHand[i].value === 11) {
-				playerAceCount = 1;
-			}
-
-			/*if (playerAceCount === 2) {
-				playerScore = 12;
-				playerAceCount = 1;
-			}*/
-		}
-	}
-
-
 	// start the score at zero
 	var playerScore,
 		  dealerScore;
@@ -219,11 +187,6 @@ GAMES.Blackjack = (function() {
 	var playerHit = function() {
 		$('#playerCards').append(playerCard);
 
-		// check to see if player's new card is an ace
-		if (deck[deckCounter].value === 11) {
-			playerAceCount += 1;
-		}
-
 		// update the information
 		playerScore += deck[deckCounter].value;
 		playerHand.push(deck[deckCounter]);
@@ -234,18 +197,12 @@ GAMES.Blackjack = (function() {
 
 		// if player goes over 21, check for aces
 		if (playerScore > 21) {		
-			if (playerAceCount > 0) { // if player has at least one ace...
-				playerScore -= 10;
-				playerAceCount -= 1;
-				displayPlayerScore();
-			} else { // otherwise, the player loses
-				hideHit();
-				$('#status').html("You bust, sucka!");
-				playerBet = 0;
-				updatePlayerScoreboard();
-				$('#btnBet').removeClass('hide');
-				$('#btnHit, #btnHold').addClass('hide');
-			}
+			hideHit();
+			$('#status').html("You bust, sucka!");
+			playerBet = 0;
+			updatePlayerScoreboard();
+			$('#btnBet').removeClass('hide');
+			$('#btnHit, #btnHold').addClass('hide');
 		}
 	};
 
@@ -297,11 +254,6 @@ GAMES.Blackjack = (function() {
 		// dealer plays on anything below 17
 		while (dealerScore < 17) {
 			$('#dealerCards').append(dealerCard);
-
-			// check to see if dealer's new card is an ace
-			if (deck[deckCounter].value === 11) {
-				dealerAceCount += 1;
-			}
 
 			// update the information
 			dealerScore += deck[deckCounter].value;
@@ -365,7 +317,6 @@ GAMES.Blackjack = (function() {
 			$('#playerScore, #btnHit, #btnHold').removeClass('hide');
 			shuffle(deck);
 			//showDeckInConsole();
-			aceCheck();
 			deal();
 			updateScore();
 			displayPlayerScore();
