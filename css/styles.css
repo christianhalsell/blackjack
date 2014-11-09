@@ -241,3 +241,12 @@ button {cursor:pointer;}
 }
 
 .btn-bet:hover {background-position:-188px -94px}
+
+.player-bet-area {
+	width:100px;
+	height:100px;
+	position:absolute;
+	left:350px;
+	top:340px;
+	border:1px solid red;
+}
