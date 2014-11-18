@@ -267,12 +267,17 @@ GAMES.Blackjack = (function() {
 		dealerTurn();
 	};
 
+	var chipCount = 0;
+
 	var chipBet = function (chipValue) {
 		// if (chipValue <= playerBalance && (playerBet + chipValue) <= 500) {
 		if (chipValue <= playerBalance && (playerBet + chipValue) <= 500) {
+			var chipName = chipValue.toString();
 			playerBet += chipValue;
 			playerBalance -= chipValue;
 			updatePlayerScoreboard();
+			$('#playerBetArea').append('<div class="chip chip-' + chipName + '" style="bottom:' + (chipCount * 6) + 'px"></div>');
+			chipCount += 1;
 		}
 	};
 
@@ -295,8 +300,14 @@ GAMES.Blackjack = (function() {
 		$('#chip100').on('click', function() {
 			chipBet(100);
 		});
-		$('#chip25').on('click', function() { chipBet(25) });
-		$('#chip5').on('click', function() { chipBet(5) });
+
+		$('#chip25').on('click', function() {
+			chipBet(25);
+		});
+
+		$('#chip5').on('click', function() {
+			chipBet(5);
+		});
 	};
 
 	return {
@@ -307,7 +318,7 @@ GAMES.Blackjack = (function() {
 		bet: function() {
 			$('.btn-chip, #btnDeal').removeClass('hide');
 			$('#dealerScore, #playerScore, #btnBet, #btnHit, #btnHold, #btnDeal').addClass('hide');
-			$('#status, #playerCards, #dealerCards').html('');
+			$('#status, #playerCards, #dealerCards, #playerBetArea').html('');
 		},
 		deal: function() {
 			$('.btn-chip, #btnDeal').addClass('hide');			

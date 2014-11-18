@@ -158,34 +158,24 @@ button {cursor:pointer;}
 	background-image:url(../images/sprites-pokerchips.png);
 }
 
-.chip-500 {
-	left:722px;
-	top:401px;
-	background-position:-264px 0;
-}
+.chip-500 {background-position:-264px 0}
+.btn-chip.chip-500 {left:722px;	top:401px}
+.btn-chip.chip-500:hover {background-position:-264px -66px}
 
-.chip-500:hover {background-position:-264px -66px}
+.chip-100 {background-position:-198px 0}
+.btn-chip.chip-100 {left:669px;	top:422px}
+.btn-chip.chip-100:hover {background-position:-198px -66px}
 
-.chip-100 {
-	left:669px;
-	top:422px;
-	background-position:-198px 0;
-}
-
-.chip-100:hover {background-position:-198px -66px}
-
-.chip-25 {
-	left:615px;
-	top:438px;
-	background-position:-132px 0;
-}
-
-.chip-25:hover {background-position:-132px -66px}
+.chip-25 {background-position:-132px 0}
+.btn-chip.chip-25 {left:615px; top:438px}
+.btn-chip.chip-25:hover {background-position:-132px -66px}
 
 .chip-5 {
+	background-position:-66px 0;
+}
+.btn-chip.chip-5 {
 	left:561px;
 	top:450px;
-	background-position:-66px 0;
 }
 
 .chip-5:hover {background-position:-66px -66px}
@@ -248,7 +238,6 @@ button {cursor:pointer;}
 	position:absolute;
 	left:350px;
 	top:360px;
-	border:1px solid red;
 }
 
 .player-bet-area .chip {
