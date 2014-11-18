@@ -6,9 +6,7 @@ GAMES.Blackjack = (function() {
 	var playerBet = 0;
 	var playerBalance = 500; // starting balance
 
-	// cache selectors
-
-
+	
 	var Card = function(position, name, value) {
 		this.position = position;
 		this.name = name;
@@ -293,21 +291,10 @@ GAMES.Blackjack = (function() {
 		$('#btnHold').on('click', playerHold);
 		$('.chip').on('click', hideDeal);
 
-		$('#chip500').on('click', function() {
-			chipBet(500);
-		});
-
-		$('#chip100').on('click', function() {
-			chipBet(100);
-		});
-
-		$('#chip25').on('click', function() {
-			chipBet(25);
-		});
-
-		$('#chip5').on('click', function() {
-			chipBet(5);
-		});
+		$('#chip500').on('click', function() { chipBet(500) });
+		$('#chip100').on('click', function() { chipBet(100)	});
+		$('#chip25').on('click', function() {	chipBet(25)	});
+		$('#chip5').on('click', function() { chipBet(5)	});
 	};
 
 	return {
