@@ -6,6 +6,7 @@ GAMES.Blackjack = (function() {
 	var playerBet = 0;
 	var playerBalance = 500; // starting balance
 
+	var chipCount = 0;
 	
 	var Card = function(position, name, value) {
 		this.position = position;
@@ -265,8 +266,6 @@ GAMES.Blackjack = (function() {
 		dealerTurn();
 	};
 
-	var chipCount = 0;
-
 	var chipBet = function (chipValue) {
 		// if (chipValue <= playerBalance && (playerBet + chipValue) <= 500) {
 		if (chipValue <= playerBalance && (playerBet + chipValue) <= 500) {
@@ -306,6 +305,7 @@ GAMES.Blackjack = (function() {
 			$('.btn-chip, #btnDeal').removeClass('hide');
 			$('#dealerScore, #playerScore, #btnBet, #btnHit, #btnHold, #btnDeal').addClass('hide');
 			$('#status, #playerCards, #dealerCards, #playerBetArea').html('');
+			chipCount = 0;
 		},
 		deal: function() {
 			$('.btn-chip, #btnDeal').addClass('hide');			

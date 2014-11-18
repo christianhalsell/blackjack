@@ -242,5 +242,6 @@ button {cursor:pointer;}
 
 .player-bet-area .chip {
 	position:absolute;
-	bottom:0; left: 14px;
+	bottom:0;
+	left:16px;
 }
