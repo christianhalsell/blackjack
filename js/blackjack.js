@@ -288,8 +288,13 @@ GAMES.Blackjack = (function() {
 		$('#btnHold').on('click', playerHold);
 		$('.chip').on('click', hideDeal);
 
-		$('#chip500').on('click', function() { chipBet(500) });
-		$('#chip100').on('click', function() { chipBet(100) });
+		$('#chip500').on('click', function() {
+			chipBet(500);
+		});
+
+		$('#chip100').on('click', function() {
+			chipBet(100);
+		});
 		$('#chip25').on('click', function() { chipBet(25) });
 		$('#chip5').on('click', function() { chipBet(5) });
 	};
@@ -300,12 +305,12 @@ GAMES.Blackjack = (function() {
 			events();
 		},
 		bet: function() {
-			$('.chip, #btnDeal').removeClass('hide');
+			$('.btn-chip, #btnDeal').removeClass('hide');
 			$('#dealerScore, #playerScore, #btnBet, #btnHit, #btnHold, #btnDeal').addClass('hide');
 			$('#status, #playerCards, #dealerCards').html('');
 		},
 		deal: function() {
-			$('.chip, #btnDeal').addClass('hide');			
+			$('.btn-chip, #btnDeal').addClass('hide');			
 			$('#playerScore, #btnHit, #btnHold').removeClass('hide');
 			shuffle(deck);
 			//showDeckInConsole();
