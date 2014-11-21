@@ -7,6 +7,8 @@ GAMES.Blackjack = (function() {
 	var playerBalance = 500; // starting balance
 
 	var chipCount = 0;
+	var playerAceCount = 0;
+	var dealerAceCount = 0;
 	
 	var Card = function(position, name, value) {
 		this.position = position;
@@ -129,6 +131,8 @@ GAMES.Blackjack = (function() {
 
 	// deal the first four cards
 	var deal = function() {
+		playerAceCount = 0;
+		dealerAceCount = 0;
 		var playerInitCards = '<div id="playerCard1" class="card"></div> <div id="playerCard2" class="card"></div>'
 		var dealerInitCards = '<div id="dealerCard1" class="card overturn"></div>	<div id="dealerCard2" class="card"></div>'
 		$('#playerCards').html(playerInitCards);
@@ -152,6 +156,8 @@ GAMES.Blackjack = (function() {
 		playerScore = (deck[0].value) + (deck[2].value);
 		dealerScore = (deck[1].value) + (deck[3].value);
 	}
+
+	// TODO: check to see if player has any aces
 
 
 	// display Player score
@@ -188,6 +194,7 @@ GAMES.Blackjack = (function() {
 		// update the information
 		playerScore += deck[deckCounter].value;
 		playerHand.push(deck[deckCounter]);
+		console.log(playerHand);
 		deckCounter += 1;
 		playerCounter += 1;
 		displayPlayerScore();
@@ -285,7 +292,7 @@ GAMES.Blackjack = (function() {
 	};
 
 	var events = function() {
-		$('#hide').on('click', showCard);
+		$('#dealerCard1').on('click', showCard);
 		$('#btnHit').on('click', playerHit);
 		$('#btnHold').on('click', playerHold);
 		$('.chip').on('click', hideDeal);
@@ -313,6 +320,7 @@ GAMES.Blackjack = (function() {
 			shuffle(deck);
 			//showDeckInConsole();
 			deal();
+			//playerAceCheck();
 			updateScore();
 			displayPlayerScore();
 			displayDealerScore();
