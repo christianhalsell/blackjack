@@ -170,22 +170,12 @@ button {cursor:pointer;}
 .btn-chip.chip-25 {left:615px; top:438px}
 .btn-chip.chip-25:hover {background-position:-132px -66px}
 
-.chip-5 {
-	background-position:-66px 0;
-}
-.btn-chip.chip-5 {
-	left:561px;
-	top:450px;
-}
+.chip-5 {background-position:-66px 0}
+.btn-chip.chip-5 {left:561px;	top:450px}
+.btn-chip.chip-5:hover {background-position:-66px -66px}
 
-.chip-5:hover {background-position:-66px -66px}
-
-.chip-clear {
-	left:507px;
-	top:459px;
-	background-position:0 0;
-}
-
+.chip-clear {background-position:0 0}
+.btn-chip.chip-clear {left:507px;	top:459px}
 .chip-clear:hover {background-position:0 -66px}
 
 .btn-round {
