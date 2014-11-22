@@ -133,6 +133,8 @@ GAMES.Blackjack = (function() {
 	var deal = function() {
 		playerAceCount = 0;
 		dealerAceCount = 0;
+		$('#playerAceCount span, #dealerAceCount span').html(0);
+
 		var playerInitCards = '<div id="playerCard1" class="card"></div> <div id="playerCard2" class="card"></div>'
 		var dealerInitCards = '<div id="dealerCard1" class="card overturn"></div>	<div id="dealerCard2" class="card"></div>'
 		$('#playerCards').html(playerInitCards);
@@ -142,6 +144,27 @@ GAMES.Blackjack = (function() {
 		$('#dealerCard1').addClass(deck[1].position);
 		$('#playerCard2').addClass(deck[2].position);
 		$('#dealerCard2').addClass(deck[3].position);
+
+		// TODO: Ace Check
+		if (deck[0].value === 11) {
+			playerAceCount += 1;
+			$('#playerAceCount span').html(playerAceCount);
+		}
+
+		if (deck[2].value === 11) {
+			playerAceCount += 1;
+			$('#playerAceCount span').html(playerAceCount);
+		}
+
+		if (deck[1].value === 11) {
+			dealerAceCount += 1;
+			$('#dealerAceCount span').html(dealerAceCount);
+		}
+
+		if (deck[3].value === 11) {
+			dealerAceCount += 1;
+			$('#dealerAceCount span').html(dealerAceCount);
+		}
 	}
 
 	// keep track of player's and dealer's hand
@@ -156,8 +179,6 @@ GAMES.Blackjack = (function() {
 		playerScore = (deck[0].value) + (deck[2].value);
 		dealerScore = (deck[1].value) + (deck[3].value);
 	}
-
-	// TODO: check to see if player has any aces
 
 
 	// display Player score
@@ -178,15 +199,16 @@ GAMES.Blackjack = (function() {
 	}
 
 	var hideHit = function() {
-		$('#hit').addClass('invisible');
+		$('#hit').addClass('hide');
 	}
 
 	var hideHold = function() {
-		$('#hold').addClass('invisible');
+		$('#hold').addClass('hide');
 	}
 
-	// LET'S PLAY!
+	//var playerAceCheck;
 
+	// LET'S PLAY!
 	// player's turn
 	var playerHit = function() {
 		$('#playerCards').append(playerCard);
@@ -320,7 +342,6 @@ GAMES.Blackjack = (function() {
 			shuffle(deck);
 			//showDeckInConsole();
 			deal();
-			//playerAceCheck();
 			updateScore();
 			displayPlayerScore();
 			displayDealerScore();
