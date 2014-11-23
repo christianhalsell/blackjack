@@ -206,7 +206,9 @@ GAMES.Blackjack = (function() {
 		$('#hold').addClass('hide');
 	}
 
-	//var playerAceCheck;
+	/* TODO: var playerAceCheck = function() {
+
+	} */
 
 	// LET'S PLAY!
 	// player's turn
