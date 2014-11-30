@@ -69,7 +69,14 @@ GAMES.Blackjack = (function() {
 			card50 = new Card('card-ac', 'Ace of Clubs', 11),
 			card51 = new Card('card-as', 'Ace of Spades', 11);
 
-	deck = [card00, card01, card02, card03, card04, card05, card06, card07, card08, card09,
+	/*deck = [card00, card01, card02, card03, card04, card05, card06, card07, card08, card09,
+					card10, card11, card12, card13, card14, card15, card16, card17, card18, card19,
+					card20, card21, card22, card23, card24, card25, card26, card27, card28, card29,
+					card30, card31, card32, card33, card34, card35, card36, card37, card38, card39,
+					card40, card41, card42, card43, card44, card45, card46, card47, card48, card49,
+					card50, card51]; */
+
+	deck = [card47, card01, card51, card03, card04, card05, card06, card07, card08, card09,
 			card10, card11, card12, card13, card14, card15, card16, card17, card18, card19,
 			card20, card21, card22, card23, card24, card25, card26, card27, card28, card29,
 			card30, card31, card32, card33, card34, card35, card36, card37, card38, card39,
@@ -181,11 +188,25 @@ GAMES.Blackjack = (function() {
 	}
 
 
+	// Check for blackjacks
+	var blackjackCheck = function() {
+		if (playerScore === 21) {
+			hideHit();
+			$('#status').html("BLACKJACK!!!");
+			playerBalance = Math.ceil((playerBalance + (playerBet * 2)) * 1.5);
+			playerBet = 0;
+			updatePlayerScoreboard();
+		}
+
+		if (dealerScore === 21) {
+			alert("Blackjack!!!");
+		}
+	}
+
 	// display Player score
 	var displayPlayerScore = function() {
 		$('#playerScore').html(playerScore);
 	}
-
 
 	// display Dealer score
 	var displayDealerScore = function() {
@@ -213,7 +234,7 @@ GAMES.Blackjack = (function() {
 		}
 	}
 
-	var fds = function() {
+	var dealerAceCheck = function() {
 		if (deck[deckCounter].value === 11) {
 			dealerAceCount += 1;
 			$('#dealerAceCount span').html(dealerAceCount);
@@ -236,14 +257,20 @@ GAMES.Blackjack = (function() {
 
 
 		// if player goes over 21, check for aces
-		if (playerScore > 21) {		
-			// TODO: check to see if player has any aces
-			hideHit();
-			$('#status').html("You bust, sucka!");
-			playerBet = 0;
-			updatePlayerScoreboard();
-			$('#btnBet').removeClass('hide');
-			$('#btnHit, #btnHold').addClass('hide');
+		if (playerScore > 21) {
+			if (playerAceCount > 0) { // if a player has at least one ace
+				playerScore -= 10;
+				playerAceCount -= 1;
+				displayPlayerScore();
+				$('#playerAceCount span').html(playerAceCount);
+			} else {
+				hideHit();
+				$('#status').html("You bust, sucka!");
+				playerBet = 0;
+				updatePlayerScoreboard();
+				$('#btnBet').removeClass('hide');
+				$('#btnHit, #btnHold').addClass('hide');
+			}
 		}
 	};
 
@@ -354,10 +381,11 @@ GAMES.Blackjack = (function() {
 		deal: function() {
 			$('.btn-chip, #btnDeal').addClass('hide');			
 			$('#playerScore, #btnHit, #btnHold').removeClass('hide');
-			shuffle(deck);
+			//shuffle(deck);
 			//showDeckInConsole();
 			deal();
 			updateScore();
+			blackjackCheck();
 			displayPlayerScore();
 			displayDealerScore();
 			updatePlayerScoreboard();
