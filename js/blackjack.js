@@ -384,13 +384,13 @@ GAMES.Blackjack = (function() {
 			events();
 		},
 		bet: function() {
-			$('.btn-chip, #btnDeal').removeClass('hide');
+			$('.btn-chip, #btnDeal, #placeYourBets').removeClass('hide');
 			$('#dealerScore, #playerScore, #btnBet, #btnHit, #btnHold, #btnDeal, #statusDisplay').addClass('hide');
 			$('#status, #playerCards, #dealerCards, #playerBetArea').html('');
 			chipCount = 0;
 		},
 		deal: function() {
-			$('.btn-chip, #btnDeal').addClass('hide');			
+			$('.btn-chip, #btnDeal, #placeYourBets').addClass('hide');			
 			$('#playerScore, #btnHit, #btnHold').removeClass('hide');
 			shuffle(deck);
 			//showDeckInConsole();
