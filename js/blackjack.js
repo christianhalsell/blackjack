@@ -145,7 +145,7 @@ GAMES.Blackjack = (function() {
 		$('#playerCard2').addClass(deck[2].position);
 		$('#dealerCard2').addClass(deck[3].position);
 
-		// TODO: Ace Check
+		// Initial ace checks
 		if (deck[0].value === 11) {
 			playerAceCount += 1;
 			$('#playerAceCount span').html(playerAceCount);
@@ -206,9 +206,19 @@ GAMES.Blackjack = (function() {
 		$('#hold').addClass('hide');
 	}
 
-	/* TODO: var playerAceCheck = function() {
+	var playerAceCheck = function() {
+		if (deck[deckCounter].value === 11) {
+			playerAceCount += 1;
+			$('#playerAceCount span').html(playerAceCount);
+		}
+	}
 
-	} */
+	var fds = function() {
+		if (deck[deckCounter].value === 11) {
+			dealerAceCount += 1;
+			$('#dealerAceCount span').html(dealerAceCount);
+		}
+	}
 
 	// LET'S PLAY!
 	// player's turn
@@ -217,6 +227,7 @@ GAMES.Blackjack = (function() {
 
 		// update the information
 		playerScore += deck[deckCounter].value;
+		playerAceCheck();
 		playerHand.push(deck[deckCounter]);
 		console.log(playerHand);
 		deckCounter += 1;
@@ -226,6 +237,7 @@ GAMES.Blackjack = (function() {
 
 		// if player goes over 21, check for aces
 		if (playerScore > 21) {		
+			// TODO: check to see if player has any aces
 			hideHit();
 			$('#status').html("You bust, sucka!");
 			playerBet = 0;
@@ -278,6 +290,7 @@ GAMES.Blackjack = (function() {
 
 			// update the information
 			dealerScore += deck[deckCounter].value;
+			dealerAceCheck();
 			dealerHand.push(deck[deckCounter]);
 			deckCounter += 1;
 			dealerCounter += 1;
