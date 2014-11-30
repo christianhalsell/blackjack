@@ -191,9 +191,11 @@ GAMES.Blackjack = (function() {
 	// Check for blackjacks
 	var blackjackCheck = function() {
 		if (playerScore === 21) {
-			hideHit();
+			$('#btnBet').removeClass('hide');
+			$('#btnHit, #btnHold').addClass('hide');
+			
 			$('#status').html("BLACKJACK!!!");
-			playerBalance = Math.ceil((playerBalance + (playerBet * 2)) * 1.5);
+			playerBalance = Math.ceil(playerBalance + (playerBet * 1.5));
 			playerBet = 0;
 			updatePlayerScoreboard();
 		}
