@@ -76,7 +76,7 @@ GAMES.Blackjack = (function() {
 					card40, card41, card42, card43, card44, card45, card46, card47, card48, card49,
 					card50, card51]; */
 
-	deck = [card00, card47, card01, card51, card04, card05, card06, card07, card08, card09,
+	deck = [card46, card47, card50, card51, card04, card05, card06, card07, card08, card09,
 			card10, card11, card12, card13, card14, card15, card16, card17, card18, card19,
 			card20, card21, card22, card23, card24, card25, card26, card27, card28, card29,
 			card30, card31, card32, card33, card34, card35, card36, card37, card38, card39,
@@ -190,7 +190,18 @@ GAMES.Blackjack = (function() {
 
 	// Check for blackjacks
 	var blackjackCheck = function() {
-		if (playerScore === 21) {
+		if (playerScore === 21 && dealerScore === 21) {
+			// push
+			$('#btnBet').removeClass('hide');
+			$('#btnHit, #btnHold').addClass('hide');
+			$('#dealerScore').removeClass('hide');
+			$('#dealerCard1').removeClass('overturn');
+
+			$('#status').html("Push");
+			playerBalance = playerBalance + playerBet;
+			playerBet = 0;
+			updatePlayerScoreboard();
+		} else if (playerScore === 21) {
 			$('#btnBet').removeClass('hide');
 			$('#btnHit, #btnHold').addClass('hide');
 
@@ -198,9 +209,7 @@ GAMES.Blackjack = (function() {
 			playerBalance = Math.ceil(playerBalance + (playerBet * 1.5));
 			playerBet = 0;
 			updatePlayerScoreboard();
-		}
-
-		if (dealerScore === 21) {
+		}	else if (dealerScore === 21) {
 			$('#btnBet').removeClass('hide');
 			$('#btnHit, #btnHold').addClass('hide');
 			$('#dealerScore').removeClass('hide');
