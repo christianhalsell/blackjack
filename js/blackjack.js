@@ -69,19 +69,12 @@ GAMES.Blackjack = (function() {
 			card50 = new Card('card-ac', 'Ace of Clubs', 11),
 			card51 = new Card('card-as', 'Ace of Spades', 11);
 
-	/*deck = [card00, card01, card02, card03, card04, card05, card06, card07, card08, card09,
+	deck = [card00, card01, card02, card03, card04, card05, card06, card07, card08, card09,
 					card10, card11, card12, card13, card14, card15, card16, card17, card18, card19,
 					card20, card21, card22, card23, card24, card25, card26, card27, card28, card29,
 					card30, card31, card32, card33, card34, card35, card36, card37, card38, card39,
 					card40, card41, card42, card43, card44, card45, card46, card47, card48, card49,
-					card50, card51]; */
-
-	deck = [card46, card47, card50, card51, card04, card05, card06, card07, card08, card09,
-			card10, card11, card12, card13, card14, card15, card16, card17, card18, card19,
-			card20, card21, card22, card23, card24, card25, card26, card27, card28, card29,
-			card30, card31, card32, card33, card34, card35, card36, card37, card38, card39,
-			card40, card41, card42, card43, card44, card45, card46, card47, card48, card49,
-			card50, card51];
+					card50, card51]; 
 
 	// show dealer's hidden card
 	var showCard = function() {
@@ -197,7 +190,7 @@ GAMES.Blackjack = (function() {
 			$('#dealerScore').removeClass('hide');
 			$('#dealerCard1').removeClass('overturn');
 
-			$('#status').html("Push");
+			$('#statusDisplay').removeClass("hide").html("Push");
 			playerBalance = playerBalance + playerBet;
 			playerBet = 0;
 			updatePlayerScoreboard();
@@ -205,7 +198,7 @@ GAMES.Blackjack = (function() {
 			$('#btnBet').removeClass('hide');
 			$('#btnHit, #btnHold').addClass('hide');
 
-			$('#status').html("BLACKJACK!!!");
+			$('#statusDisplay').removeClass("hide").html("BLACKJACK!!!");
 			playerBalance = Math.ceil(playerBalance + (playerBet * 1.5));
 			playerBet = 0;
 			updatePlayerScoreboard();
@@ -215,7 +208,7 @@ GAMES.Blackjack = (function() {
 			$('#dealerScore').removeClass('hide');
 			$('#dealerCard1').removeClass('overturn');
 
-			$('#status').html("Dealer Blackjack");
+			$('#statusDisplay').removeClass("hide").html("Dealer Blackjack");
 			playerBet = 0;
 			updatePlayerScoreboard();
 		}
@@ -283,7 +276,7 @@ GAMES.Blackjack = (function() {
 				$('#playerAceCount span').html(playerAceCount);
 			} else {
 				hideHit();
-				$('#status').html("You bust, sucka!");
+				$('#statusDisplay').removeClass("hide").html("You bust, sucka!");
 				playerBet = 0;
 				updatePlayerScoreboard();
 				$('#btnBet').removeClass('hide');
@@ -294,7 +287,7 @@ GAMES.Blackjack = (function() {
 
 	var whoWins = function() {
 		if (dealerScore > 21) {
-			$('#status').html("You Win!");
+			$('#statusDisplay').removeClass("hide").html("You Win!");
 			playerBalance = playerBalance + (playerBet * 2);
 			playerBet = 0;
 			updatePlayerScoreboard();
@@ -302,20 +295,20 @@ GAMES.Blackjack = (function() {
 		} else if (dealerScore <= 21) {
 			 if (playerScore > dealerScore) {
 				hideHit();
-				$('#status').html("You Win!");
+				$('#statusDisplay').removeClass("hide").html("You Win!");
 				playerBalance = playerBalance + (playerBet * 2);
 				playerBet = 0;
 				updatePlayerScoreboard();
 
 			} else if (playerScore < dealerScore) {
 				hideHit();
-				$('#status').html("You lose! Good day, sir!");
+				$('#statusDisplay').removeClass("hide").html("You lose! Good day, sir!");
 				playerBet = 0;
 				updatePlayerScoreboard();
 
 			} else {
 				hideHit();
-				$('#status').html("Push");
+				$('#statusDisplay').removeClass("hide").html("Push");
 				playerBalance = playerBalance + playerBet;
 				playerBet = 0;
 				updatePlayerScoreboard();
@@ -392,14 +385,14 @@ GAMES.Blackjack = (function() {
 		},
 		bet: function() {
 			$('.btn-chip, #btnDeal').removeClass('hide');
-			$('#dealerScore, #playerScore, #btnBet, #btnHit, #btnHold, #btnDeal').addClass('hide');
+			$('#dealerScore, #playerScore, #btnBet, #btnHit, #btnHold, #btnDeal, #statusDisplay').addClass('hide');
 			$('#status, #playerCards, #dealerCards, #playerBetArea').html('');
 			chipCount = 0;
 		},
 		deal: function() {
 			$('.btn-chip, #btnDeal').addClass('hide');			
 			$('#playerScore, #btnHit, #btnHold').removeClass('hide');
-			//shuffle(deck);
+			shuffle(deck);
 			//showDeckInConsole();
 			deal();
 			updateScore();

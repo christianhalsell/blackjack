@@ -3,7 +3,7 @@ body {
 	font-family:verdana, arial, sans-serif;
 }
 
-.hide {display:none};
+.hide {display:none !important}
 .invisible {visibility: hidden}
 
 .container {
@@ -234,4 +234,27 @@ button {cursor:pointer;}
 	position:absolute;
 	bottom:0;
 	left:16px;
+}
+
+.status-display-wrap {
+	position:absolute;
+	left:50%;
+}
+
+.status-display {
+	padding:10px 10px;
+	border-radius:10px;
+	border:5px solid #f6e09f;
+	color:#3c290b;
+	font-size:18px;
+	font-weight:bold;
+	text-shadow:0px 1px #fff;
+	text-align:center;
+	display:inline-block;
+	position:relative;
+	left:-50%;
+	top:260px;
+	box-shadow: 3px 3px 3px rgba(0, 0, 0, .7);
+	background:#d5b676;
+	z-index:100000;
 }
