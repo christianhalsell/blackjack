@@ -4,29 +4,28 @@ body {
 }
 
 .hide {display:none !important}
-.invisible {visibility: hidden}
 
 .container {
-	position:absolute;
-	padding:10px;
-	width:780px;
-	height:580px;
-	top:50%;
-	left:50%;
-	margin-top:-300px;
-	margin-left:-400px;
 	background:url("../images/table-bg.jpg") no-repeat 0 0;
 	border:2px solid #f6e09f;
-}
-
-#playerCards {
+	height:580px;
+	left:50%;
+	margin-left:-400px;
+	margin-top:-300px;
 	position:absolute;
-	left:350px;
-	top:216px;
-	padding-left:51px;
+	padding:10px;
+	top:50%;
+	width:780px;
 }
 
-#dealerCards {
+.player-cards {
+	left:350px;
+	padding-left:51px;
+	position:absolute;
+	top:216px;
+}
+
+.dealer-cards {
 	position:absolute;
 	left:350px;
 	top:16px;
@@ -35,8 +34,8 @@ body {
 
 .card {
 	background:url("../images/cards.gif") no-repeat 0 -469px;
-	height:118px;
 	float:left;
+	height:118px;
 	margin-left:-51px;
 	width:81px;
 }
@@ -98,41 +97,38 @@ body {
 
 button {cursor:pointer;}
 
-#playerScore,
-#dealerScore {
-	position:absolute;
-	text-align:center;
-	width:20px;
+.score {
+	background:red;
+	border:1px solid black;
+	color:#fff;
 	font-weight:bold;
 	font-size:12px;
 	padding:2px 4px;
-	color:#fff;
+	position:absolute;
+	text-align:center;
 	text-shadow: 1px 1px 2px #000;
-	border:1px solid black;
-	background:red;
+	width:20px;
 }
 
-#playerScore {
+.player-score {
 	left:320px;
 	top:216px;
 }
 
-#dealerScore {
+.dealer-score {
 	left:320px;
 	top:16px;
 }
 
-#status {color:yellow; font-weight: bold}
-
 .scoreboard {
+	bottom:0;
 	color:#fff;
 	font-size:12px;
-	position:absolute;
-	bottom:0;
-	left:0;
-	width:184px;
 	height:58px;
+	left:0;
+	position:absolute;
 	text-align:right;
+	width:184px;
 }
 
 .player-bet {
@@ -142,20 +138,19 @@ button {cursor:pointer;}
 }
 
 .player-balance {
-	position:absolute;
 	bottom:8px;
 	right:14px;
+	position:absolute;
 }
 
 .chip {
-	width:66px;
-	height:66px;
+	background:transparent url(../images/sprites-pokerchips.png) no-repeat 0 0;
 	border:none;
+	height:66px;
 	outline:0;
 	text-indent:-99999px;
 	position:absolute;
-	background-color:transparent;
-	background-image:url(../images/sprites-pokerchips.png);
+	width:66px;
 }
 
 .chip-500 {background-position:-264px 0}
@@ -179,92 +174,90 @@ button {cursor:pointer;}
 .chip-clear:hover {background-position:0 -66px}
 
 .btn-round {
-	width:94px;
-	height:94px;
+	background:transparent url(../images/sprites-buttons.png) no-repeat 0 0;
 	border:0;
+	height:94px;
 	outline:0;
-	text-indent: -9999px;
 	position:absolute;
-	background-image:url(../images/sprites-buttons.png);
-	background-color:transparent;
-	background-repeat: no-repeat;
+	text-indent: -9999px;
+	width:94px;
 }
 
 .btn-deal {
+	background-position:-282px 0;
 	left:353px;
 	top:478px;
-	background-position:-282px 0;
 }
 
 .btn-deal:hover {background-position:-282px -94px}
 
 .btn-hit {
+	background-position:0 0;
 	left:353px;
 	top:478px;
-	background-position:0 0;
 }
 
 .btn-hit:hover {background-position:0 -94px}
 
 .btn-hold {
+	background-position:-94px 0;
 	left:438px;
 	top:474px;
-	background-position:-94px 0;
 }
 
 .btn-hold:hover {background-position:-94px -94px}
 
 .btn-bet {
+	background-position:-188px 0;	
 	left:353px;
 	top:478px;
-	background-position:-188px 0;	
 }
 
 .btn-bet:hover {background-position:-188px -94px}
 
 .player-bet-area {
-	width:100px;
 	height:100px;
-	position:absolute;
 	left:350px;
+	position:absolute;
 	top:360px;
+	width:100px;
 }
 
 .player-bet-area .chip {
-	position:absolute;
 	bottom:0;
 	left:16px;
+	position:absolute;
 }
 
 .status-display-wrap {
-	position:absolute;
 	left:50%;
+	position:absolute;
 }
 
 .status-display {
-	padding:10px 20px;
+	background:#d5b676;
 	border-radius:10px;
 	border:5px solid #f6e09f;
+	box-shadow: 3px 3px 3px rgba(0, 0, 0, .7);
 	color:#3c290b;
+	display:inline-block;
 	font-size:18px;
 	font-weight:bold;
+	left:-50%;
+	padding:10px 20px;
+	position:relative;
 	text-shadow:0px 1px #fff;
 	text-align:center;
-	display:inline-block;
-	position:relative;
-	left:-50%;
 	top:260px;
-	box-shadow: 3px 3px 3px rgba(0, 0, 0, .7);
-	background:#d5b676;
 	z-index:100;
 }
 
 .place-your-bets {
-	width:745px;
-	height:199px;
-	position:absolute;
-	left:27px;
-	top:86px;
-	z-index:101;
 	background:url(../images/place-your-bets.png) no-repeat 0 0;
+	height:199px;
+	left:27px;
+	position:absolute;
+	top:86px;
+	width:745px;
+	z-index:101;
 }
